@@ -59,7 +59,7 @@
 					</ol>
 				</p>
 			<?php } else if (ucfirst($questionArray['type']) == 'Likert') {
-					?><p></p><b><u>Answer Given</u>:&nbsp;</b><?php echo $section['answers'][$questionId]['given']; ?> </p> <?php
+					?><p></p><b><u>Answer Given</u>:&nbsp;</b><?php if(isset($section['answers'][$questionId]['given'])) { echo $section['answers'][$questionId]['given']; } else { echo 'None'; } ?> </p> <?php
 				} else {
 				?>				
 				<b><u>Answer Given</u></b>
