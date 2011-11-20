@@ -187,6 +187,10 @@ class Wpsqt_Shortcode {
 			}
 		}
 
+
+
+
+
 		// handle contact form and all the stuff that comes with it.
 		if ( isset($_SESSION['wpsqt'][$quizName]['details']['contact']) && $_SESSION['wpsqt'][$quizName]['details']['contact'] == "yes" && $this->_step <= 1 ){
 			$fields = $wpdb->get_results(
@@ -236,6 +240,11 @@ class Wpsqt_Shortcode {
 			$this->_key = $this->_step;
 		}
 
+
+
+
+
+		// Handles the timer if enabled
 		if ($this->_key == 0) {
 			$timeTaken = 0;
 		} else {
