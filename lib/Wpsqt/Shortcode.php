@@ -1,4 +1,4 @@
-<?php
+vc<?php
 require_once WPSQT_DIR.'lib/Wpsqt/Question.php';
 require_once WPSQT_DIR.'lib/Wpsqt/Mail.php';
 if ( !defined('DONOTCACHEPAGE') ){
@@ -186,9 +186,6 @@ class Wpsqt_Shortcode {
 				}
 			}
 		}
-
-
-
 
 
 		// handle contact form and all the stuff that comes with it.
@@ -544,7 +541,7 @@ class Wpsqt_Shortcode {
 		}
 
 		require_once Wpsqt_Core::pageView('site/'.$this->_type.'/finished.php');
-		if ( $this->_type == "survey" ){
+		if ( $this->_type == "survey" || $this->_type == "poll" ){
 			$this->_cacheSurveys();
 		}
 
@@ -590,9 +587,10 @@ class Wpsqt_Shortcode {
 					$cachedSections[$sectionKey]['questions'][$question['id']]['type'] = $question['type'];
 					$cachedSections[$sectionKey]['questions'][$question['id']]['answers'] = array();
 				}
-
 				if ( $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Multiple Choice" ||
-					 $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Dropdown" ) {
+					 $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Dropdown" || 
+					 $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == 'Single' || 
+					 $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == 'Multiple') {
 					if ( empty($cachedSections[$sectionKey]['questions'][$question['id']]['answers']) ) {
 						foreach ( $question['answers'] as $answerKey => $answers ){
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answerKey] = array("text" => $answers['text'],"count" => 0);
@@ -639,14 +637,25 @@ class Wpsqt_Shortcode {
 						$givenAnswer = NULL;
 					}
 				}
-				if ($question['likertscale'] == 'Agree/Disagree') {
+				// This is only run on a poll multiple question.
+				if ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Multiple") {
+					if(isset($section['answers'][$question['id']])) {
+						$givenAnswer = array();
+						foreach( $section['answers'][$question['id']]['given'] as $gAnswer) {
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$gAnswer]["count"]++;
+						}
+					} else {
+						$givenAnswer = NULL;
+					}
+				}
+				if (isset($question['likertscale']) && $question['likertscale'] == 'Agree/Disagree') {
 				 	if(isset($section['answers'][$question['id']])) {
 						$givenAnswer = $section['answers'][$question['id']]['given'];
 					} else {
 						$givenAnswer = NULL;
 					}
 				}
-				if (isset($cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswer]["count"]))
+				if ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] != "Multiple" && isset($cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswer]["count"]))
 					$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswer]["count"]++;
 			}
 		}
