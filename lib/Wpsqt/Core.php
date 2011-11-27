@@ -237,33 +237,12 @@ class Wpsqt_Core {
 		$returnString = '';
 		$pageUri = self::generateUri( array('pageno') );
 
-		$startNumber = $currentPage -3;
-		if ($startNumber < 1 ){
-			$startNumber = 1;
-		}
-
-		if ( $currentPage != 1 && $startNumber > 3 ){
-			$startNumber = ($currentPage - 2);
-		}
-		$endNumber = ($startNumber+5);
-
-		if ( $startNumber != 1 ){
-			$returnString .= '<a href="'.$pageUri.'&pageno=1 " class="page-numbers">1</a>';
-		}
-
-		for ( $i = $startNumber; $i <= $endNumber; $i++ ){
-
-			if ( $i > $numberOfPages ){
-				break;
+		for($i = 1; $i <= $numberOfPages; $i ++) {
+			if ($i == $currentPage) {
+				$returnString .= ' <a href="'.$pageUri.'pageno='.$i.'" class="page-numbers current">'.$i.'</a>';
+			} else {
+				$returnString .= ' <a href="'.$pageUri.'pageno='.$i.'" class="page-numbers">'.$i.'</a>';
 			}
-
-			$returnString .= ($i == $currentPage) ? '<span class="page-numbers current">' : ' <a href="'.$pageUri.'&pageno='.$i.'" class="page-numbers">';
-			$returnString .= $i;
-			$returnString .= ($i == $currentPage) ? '</span>' : '</a> ';
-		}
-
-		if ( $endNumber != $numberOfPages && $numberOfPages > ($startNumber+5) ){
-			$returnString .= '<a href="'.$pageUri.'&pageno='.$numberOfPages.' " class="page-numbers">'.$numberOfPages.'</a> ';
 		}
 
 		return $returnString;
@@ -424,7 +403,7 @@ class Wpsqt_Core {
 				$sql .=  'AND `status` = "Accepted"';
 			$return = $wpdb->get_results($sql, 'ARRAY_A');
 			if (empty($return))
-				echo '<p>'.$username.' has no results';
+				echo '<p>'.$username.' has no results</p>';
 			foreach ($return as $result) {
 				$sql = 'SELECT * FROM `'.WPSQT_TABLE_QUIZ_SURVEYS.'` WHERE `id` = "'.$result['item_id'].'"';
 				$return = $wpdb->get_results($sql, 'ARRAY_A');
