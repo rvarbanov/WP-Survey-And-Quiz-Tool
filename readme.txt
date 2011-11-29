@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=99WUG
 Tags: Quiz,test,exam,survey,results,email,quizzes,charts,google charts,wpsqt,tool,poll,polling,polls
 Requires at least: 3.1
 Tested up to: 3.3-beta2
-Stable tag: 2.8
+Stable tag: 2.8.1
 A highly customisable Quiz, Survey and Poll plugin to which allows for unlimited questions and sections.
 
 == Description ==
@@ -70,6 +70,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Fixed pagination on quiz/survey list
 * Fixed poll results for multiple questions
 * Fixed several notices and warnings
+* Cache all poll results like survey results
 * Optimisation on several sections
 
 = 2.8 =
