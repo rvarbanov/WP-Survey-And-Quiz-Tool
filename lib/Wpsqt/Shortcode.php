@@ -666,11 +666,29 @@ class Wpsqt_Shortcode {
 					);
 		} else {
 			$wpdb->query(
-				$wpdb->prepare("INSERT INTO `".WPSQT_TABLE_SURVEY_CACHE."` (sections,item_id) VALUES (%s,%d)",
+				$wpdb->prepare("INSERT INTO `".WPSQT_TABLE_SURVEY_CACHE."` (sections,item_id,total) VALUES (%s,%d,1)",
 								 array(serialize($cachedSections),$_SESSION['wpsqt'][$quizName]['details']['id']) )
 					);
 		}
+		if (!isset($_SESSION['wpsqt']['result_id']) || $_SESSION['wpsqt']['result_id'] == null) {
+			$resultId = $_SESSION['wpsqt']['current_result_id'];
+		} else {
+			$resultId = $_SESSION['wpsqt']['result_id'];
+		}
+		$wpdb->query(
+				$wpdb->prepare("UPDATE `".WPSQT_TABLE_RESULTS."` SET cached=1 WHERE `id` = %d", $resultId)
+					);
 
+	}
+
+	/**
+	 * Alias to the cache surveys function for polls
+	 * so it can be ran from upgrade script.
+	 * 
+	 * @author Ollie Armstrong
+	 */
+	public function cachePoll() {
+		$this->_cacheSurveys();
 	}
 
 }
