@@ -1,4 +1,4 @@
-vc<?php
+<?php
 require_once WPSQT_DIR.'lib/Wpsqt/Question.php';
 require_once WPSQT_DIR.'lib/Wpsqt/Mail.php';
 if ( !defined('DONOTCACHEPAGE') ){
