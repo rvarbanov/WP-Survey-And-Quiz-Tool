@@ -92,12 +92,13 @@ class Wpsqt_Mail {
 				$emailList[] = $_SESSION['wpsqt'][$quizName]['details']['notification_email'];
 			}
 		}
-
+		$type = ucfirst($_SESSION['wpsqt'][$quizName]['details']['type']);
+		$blogname = get_bloginfo('name');
 		$emailSubject  = 'There is a new result!';
-		$headers = 'From: WPSQT Bot <'.$fromEmail.'>' . "\r\n";
+		$headers = 'From: '.$blogname.' <'.$fromEmail.'>' . "\r\n";
 
 		foreach( $emailList  as $emailAddress ){
-			wp_mail($emailAddress,'WPSQT Notification',$emailMessage,$headers);
+			wp_mail($emailAddress,$type.' Notification From '.$blogname,$emailMessage,$headers);
 		}	
 	}
 	
