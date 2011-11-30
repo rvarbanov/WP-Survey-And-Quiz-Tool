@@ -36,6 +36,7 @@ class Wpsqt_Tokens {
 					  	   ->addToken("DATE_EU", "The date the quiz or survey was taken in EU format.")
 					  	   ->addToken("DATE_US", "The date the quiz or survey was taken in US format.")
 						   ->addToken("SCORE", "Score gained in quiz, only works if automarking is enabled.")
+						   ->addToken("SCORE_PERCENTAGE", "Score gained in quiz, in a percentage.")
 						   ->addToken("RESULT_URL", "A link to view the results in the dashboard.")
 						   ->addToken("DATETIME_EU", "The date and time the quiz or survey was taken in EU format.")
 						   ->addToken("DATETIME_US", "The date and time the quiz or survey was taken in US format.")
@@ -112,6 +113,10 @@ class Wpsqt_Tokens {
 		foreach ( array("QUIZ_NAME","SURVEY_NAME") as $token ) {
 			$this->setTokenValue($token,$_SESSION['wpsqt'][$quizName]['details']['name']);
 		}
+
+		// Calculate percentage
+		preg_match('$(\d*)\scorrect\sout\sof\s(\d*)$', $_SESSION['wpsqt']['current_score'], $score);
+		$percentage = $score[1] / $score[2] * 100 . '%';
 		
 		$this->setTokenValue('DATE_EU'     , date('d-m-Y') );
 		$this->setTokenValue('DATE_US'     , date('m-d-Y') );
@@ -121,6 +126,7 @@ class Wpsqt_Tokens {
 		$this->setTokenValue('HOSTNAME'    , gethostbyaddr($_SERVER['REMOTE_ADDR']) );
 		$this->setTokenValue('USER_AGENT'  , $_SERVER['HTTP_USER_AGENT'] );		
 		$this->setTokenValue('SCORE'       , ( isset($_SESSION['wpsqt']['current_score']) ) ? $_SESSION['wpsqt']['current_score'] : '');
+		$this->setTokenValue('SCORE_PERCENTAGE' , ( isset($percentage) ) ? $percentage : '');
 		$this->setTokenValue('RESULT_URL'  , WPSQT_URL_MAIN."&section=results&subsection=mark&id=".$_SESSION['wpsqt']['item_id']."&resultid=".$_SESSION['wpsqt']['result_id'] );
 		$this->setTokenValue('USER_EMAIL'  , ( isset($_SESSION['wpsqt'][$quizName]['person']['email']) ) ? $_SESSION['wpsqt'][$quizName]['person']['email'] : '');
 		$this->setTokenValue('USER_NAME'   , ( isset($_SESSION['wpsqt'][$quizName]['person']['name']) ) ? $_SESSION['wpsqt'][$quizName]['person']['name'] : 'Anonymous User');
