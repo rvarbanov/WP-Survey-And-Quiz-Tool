@@ -18,8 +18,8 @@ class Wpsqt_Top_Widget extends WP_Widget {
 		$quiz_id = $instance['quiz_id'];
 		$max_results = $instance['max_results'];
 ?>
-	<p><label for="<?php echo $this->get_field_id('quiz_id'); ?>">Quiz ID: <input class="widefat" id="<?php echo $this->get_field_id('quiz_id'); ?>" name="<?php echo $this->get_field_name('quiz_id'); ?>" type="text" value="<?php echo attribute_escape($quiz_id); ?>" /></label></p>
-	<p><label for="<?php echo $this->get_field_id('max_results'); ?>">Max Results: <input class="widefat" id="<?php echo $this->get_field_id('max_results'); ?>" name="<?php echo $this->get_field_name('max_results'); ?>" type="text" value="<?php echo attribute_escape($max_results); ?>" /></label></p>
+	<p><label for="<?php echo $this->get_field_id('quiz_id'); ?>">Quiz ID: <input class="widefat" id="<?php echo $this->get_field_id('quiz_id'); ?>" name="<?php echo $this->get_field_name('quiz_id'); ?>" type="text" value="<?php echo esc_attr($quiz_id); ?>" /></label></p>
+	<p><label for="<?php echo $this->get_field_id('max_results'); ?>">Max Results: <input class="widefat" id="<?php echo $this->get_field_id('max_results'); ?>" name="<?php echo $this->get_field_name('max_results'); ?>" type="text" value="<?php echo esc_attr($max_results); ?>" /></label></p>
 <?php
 	}
 	
@@ -41,7 +41,7 @@ class Wpsqt_Top_Widget extends WP_Widget {
 		// Gets the quiz name
 		$quiz = $wpdb->get_row("SELECT `name` FROM `".WPSQT_TABLE_QUIZ_SURVEYS."` WHERE id = '".$instance['quiz_id']."'");
 		
-		// Actually grabs the top 5 results
+		// Actually grabs the top results
 		$top = $wpdb->get_results("SELECT * FROM `".WPSQT_TABLE_RESULTS."` WHERE `item_id` = '".$instance['quiz_id']."' ORDER BY `percentage` DESC LIMIT ".$instance['max_results'], ARRAY_A);
 		
 		echo $before_widget;
@@ -53,9 +53,16 @@ class Wpsqt_Top_Widget extends WP_Widget {
 		// Displays top results
 		foreach($top as $result) {
 			$person = unserialize($result['person']);
-			if (empty($person['name']) || empty($result['percentage']))
+			if (empty($result['percentage']))
 				continue;
-			echo '<p>'.ucwords($person['name']).' with a score of '.$result['percentage'].'%</p>';
+			if (isset($person['name']) && !empty($person['name'])) {
+				$name = $person['name'];
+			} else if(isset($person['Name']) && !empty($person['Name'])) {
+				$name = $person['Name'];
+			} else {
+				$name = 'Anonymous';
+			}
+			echo '<p>'.ucwords($name).' with a score of '.$result['percentage'].'%</p>';
 		}
 		
 		echo $after_widget;
