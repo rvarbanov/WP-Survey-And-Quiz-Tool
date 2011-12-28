@@ -33,6 +33,8 @@ if ( filter_input(INPUT_GET, 'html') ){
 						$wpdb->prepare("SELECT * FROM `".WPSQT_TABLE_QUIZ_SURVEYS."` WHERE id = %d", array($_GET['quizid'])),
 						ARRAY_A);
 						
+	$quizDetails['settings'] = unserialize($quizDetails['settings']);
+						
 	$resultDetails = $wpdb->get_row(
 						$wpdb->prepare("SELECT * FROM `".WPSQT_TABLE_RESULTS."` WHERE id = %d", array($_GET['id'])),
 						ARRAY_A	);
@@ -43,7 +45,7 @@ if ( filter_input(INPUT_GET, 'html') ){
 	$personName = ( isset($resultDetails['person']['name']) && !empty($resultDetails['person']['name']) ) ? $resultDetails['person']['name'] : 'Anonymous';
 	$timestamp = strtotime($resultDetails['timestamp']);
 	
-	$pdfTemplate = (empty($quizDetails['pdf_template'])) ? get_option('wpsqt_pdf_template'):$quizDetails['pdf_template'];
+	$pdfTemplate = (empty($quizDetails['pdf_template'])) ? get_option('wpsqt_pdf_template'):$quizDetails['settings']['pdf_template'];
 	
 	if ( empty($pdfTemplate) ){
 		// default pdf template here.
