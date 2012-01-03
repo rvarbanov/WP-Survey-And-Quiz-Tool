@@ -45,7 +45,7 @@ if ( filter_input(INPUT_GET, 'html') ){
 	$personName = ( isset($resultDetails['person']['name']) && !empty($resultDetails['person']['name']) ) ? $resultDetails['person']['name'] : 'Anonymous';
 	$timestamp = strtotime($resultDetails['timestamp']);
 	
-	$pdfTemplate = (empty($quizDetails['pdf_template'])) ? get_option('wpsqt_pdf_template'):$quizDetails['settings']['pdf_template'];
+	$pdfTemplate = (empty($quizDetails['settings']['pdf_template'])) ? get_option('wpsqt_pdf_template'):$quizDetails['settings']['pdf_template'];
 	
 	if ( empty($pdfTemplate) ){
 		// default pdf template here.
