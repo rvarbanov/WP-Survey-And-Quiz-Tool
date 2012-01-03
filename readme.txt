@@ -65,6 +65,12 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 == ChangeLog ==
 
+= 2.8.3 =
+
+* Added %SCORE_PERCENTAGE% replacement token
+* Changed the subject for emails sent from WPSQT
+* Changed the email handler
+
 = 2.8.2 =
 
 * Fixed install script

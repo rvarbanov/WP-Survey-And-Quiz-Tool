@@ -38,7 +38,6 @@ class Wpsqt_Form_Question extends Wpsqt_Form {
 			$typeHelpText .= "<strong>".$type."</strong> ".$text."<br />";
 		}
 		
-		
 		$this->addOption("wpsqt_name", "Question", "text", $options['question'], "The text for the question (the actual question)." )
 			 ->addOption("wpsqt_type", "Type", "select", $options['type'], $typeHelpText, array_keys($questionTypes) );
 			 
