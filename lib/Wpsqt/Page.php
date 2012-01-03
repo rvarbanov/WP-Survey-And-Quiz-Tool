@@ -46,6 +46,7 @@ abstract class Wpsqt_Page {
 	
 	final public function __construct(){
 		
+		do_action('wpsqt_page_files');
 		global $wpdb;		
 		$this->wpdb = $wpdb;
 		$this->_pageView = 'none.php';

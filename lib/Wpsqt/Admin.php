@@ -22,7 +22,7 @@ class Wpsqt_Admin extends Wpsqt_Core {
 		parent::__construct();
 		add_action('plugins_loaded', array($this, 'wpsqt_init_menus'));
 
-		add_action( 'admin_init' , array($this,"enqueue_files"));
+		add_action( 'wpsqt_page_files' , array($this,"enqueue_files_admin"));
 		add_action( 'admin_init' , array($this,"adminFilter"));
 		add_action( 'admin_head-media-upload.php', array( $this, 'print_scripts_media_up' ), 11 );
 		add_action( 'admin_notices' , array($this, 'admin_notices') );
@@ -226,8 +226,7 @@ END;
 	 * 
 	 * @since 2.0
 	 */	
-	public function enqueue_files(){
-		
+	public function enqueue_files_admin(){
 		wp_enqueue_script("jquery");
 		wp_enqueue_style("wpsqt-print",plugins_url('/css/print.css',WPSQT_FILE));
 		wp_enqueue_style("wpsqt-style",plugins_url('/css/style.css',WPSQT_FILE));
