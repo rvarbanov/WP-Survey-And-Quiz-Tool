@@ -540,11 +540,11 @@ class Wpsqt_Shortcode {
 			Wpsqt_Mail::sendMail();
 		}
 
-		require_once Wpsqt_Core::pageView('site/'.$this->_type.'/finished.php');
 		if ( $this->_type == "survey" || $this->_type == "poll" ){
 			$this->_cacheSurveys();
 		}
 
+		require_once Wpsqt_Core::pageView('site/'.$this->_type.'/finished.php');
 		unset($_SESSION['wpsqt']['result_id']);
 	}
 
