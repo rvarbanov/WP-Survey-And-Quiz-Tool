@@ -71,7 +71,7 @@
 							$googleChartUrl .= '&chm=N,000000,0,,10|N,000000,1,,10|N,000000,2,,10'; // Adds the count above bars
 							$googleChartUrl .= '&chds=0,'.(++$maxValue); // Sets scaling to a little bit more than max value
 							$googleChartUrl .= '&chd=t:'.implode(',', $valueArray); // Chart data
-							?><img src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
+							?><img width="65%" height="65%" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
 					  } else {
 							echo 'Something went really wrong, please report this bug to the forum. Here\'s a var dump which might make you feel better.<pre>'; var_dump($question); echo '</pre>';
 					  } ?>
