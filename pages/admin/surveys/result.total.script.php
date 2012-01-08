@@ -7,6 +7,7 @@
 	<?php foreach ( $sections as $sectionKey => $secton ){
 			foreach ( $secton['questions'] as $questonKey => $question ) {
 		?>
+			<div class="wpsqt-question-review">
 			<h3><?php echo $question['name']; ?></h3>
 
 			<?php if ( $question['type'] == "Multiple Choice" ||
@@ -23,7 +24,7 @@
 						$googleChartUrl .= '&chl='.implode('|',$nameArray);
 						?>
 
-						<img src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" />
+						<img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" />
 				<?php } else if ($question['type'] == "Free Text") {
 
 						$i = 1; // Variable used to count answers - used later
@@ -71,7 +72,7 @@
 							$googleChartUrl .= '&chm=N,000000,0,,10|N,000000,1,,10|N,000000,2,,10'; // Adds the count above bars
 							$googleChartUrl .= '&chds=0,'.(++$maxValue); // Sets scaling to a little bit more than max value
 							$googleChartUrl .= '&chd=t:'.implode(',', $valueArray); // Chart data
-							?><img width="65%" height="65%" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
+							?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
 					  } else {
 							echo 'Something went really wrong, please report this bug to the forum. Here\'s a var dump which might make you feel better.<pre>'; var_dump($question); echo '</pre>';
 					  } ?>
@@ -80,12 +81,29 @@
 						<?php for ($i = 0; $i < count($nameArray); $i++) {
 							echo $nameArray[$i].':&nbsp;'.$valueArray[$i].'&nbsp;entries<br />';
 						} ?>
-					</div>
-			<?php } ?>
-			<div class="wpsqt-survey-info">
-				<strong>Survey info</strong> <?php
-				$nOfParticipants = $wpdb->get_var("SELECT `total` FROM `".WPSQT_TABLE_SURVEY_CACHE."` WHERE `item_id` = '".$_SESSION['wpsqt']['item_id']."'");
-				echo '<p>There has been '.$nOfParticipants.' participants</p>';
-			?></div> <?php
+	<?php $givenAnswers = $wpdb->get_row("SELECT `sections` FROM `".WPSQT_TABLE_RESULTS."` ORDER BY `id` DESC LIMIT 1", ARRAY_A);
+	$givenAnswers = unserialize($givenAnswers['sections']);
+	$givenAnswers = $givenAnswers[$sectionKey]['answers'][$questonKey]['given'];
+	echo 'You entered: ';
+	if (is_array($givenAnswers)) {
+		foreach ($givenAnswers as $givenAnswer) {
+			foreach($_SESSION['wpsqt'][$_SESSION['wpsqt']['current_id']]['sections'][$sectionKey]['questions'] as $question) {
+				if ($question['id'] == $questonKey) {
+					echo $question['answers'][$givenAnswer]['text'].' ';
+				}
+			}
+		}
+	} else {
+		echo $givenAnswers;
 	}
+	?>
+					</div>
+					</div>
+					<?php } ?>
+		<?php } ?>
+		<div class="wpsqt-survey-info">
+			<strong>Survey info</strong> <?php
+			$nOfParticipants = $wpdb->get_var("SELECT `total` FROM `".WPSQT_TABLE_SURVEY_CACHE."` WHERE `item_id` = '".$_SESSION['wpsqt']['item_id']."'");
+			echo '<p>There has been '.$nOfParticipants.' participants</p>';
+		?></div><?php
 } ?>
