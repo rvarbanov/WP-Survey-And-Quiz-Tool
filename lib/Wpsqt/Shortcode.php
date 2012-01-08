@@ -608,7 +608,7 @@ class Wpsqt_Shortcode {
 						} else {
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['stronglydisagree'] = array('count' => 0);
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['disagree'] = array('count' => 0);
-							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['meh'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['noopinion'] = array('count' => 0);
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['agree'] = array('count' => 0);
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['stronglyagree'] = array('count' => 0);
 						}
