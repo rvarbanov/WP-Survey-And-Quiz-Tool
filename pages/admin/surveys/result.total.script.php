@@ -75,7 +75,15 @@
 					  } else {
 							echo 'Something went really wrong, please report this bug to the forum. Here\'s a var dump which might make you feel better.<pre>'; var_dump($question); echo '</pre>';
 					  } ?>
-
-	<?php }
+					<div class="wpsqt-question-info">
+						<strong>Question Info</strong><br />
+						<?php for ($i = 0; $i < count($nameArray); $i++) {
+							echo $nameArray[$i].':&nbsp;'.$valueArray[$i].'&nbsp;entries<br />';
+						} ?>
+					</div>
+			<?php } ?>
+			<div class="wpsqt-survey-info">
+				<strong>Survey info</strong> <?php
+			?></div> <?php
 	}
 } ?>
