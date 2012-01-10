@@ -65,6 +65,12 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 == ChangeLog ==
 
+= 2.8.4 =
+
+* Added results to finish display of surveys - like polls
+* Tweaked survey results page
+* Added option to customise graph colours
+
 = 2.8.3 =
 
 * Added %SCORE_PERCENTAGE% replacement token

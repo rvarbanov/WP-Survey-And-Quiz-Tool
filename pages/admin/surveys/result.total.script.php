@@ -47,7 +47,7 @@
 
 						}
 					  } else if ($question['type'] == "Likert") {
-							$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs';
+							$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
 							$valueArray    = array();
 							$nameArray     = array();
 							$maxValue = 0;
