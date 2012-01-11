@@ -21,7 +21,7 @@ $objTokens->setDefaultValues();
 	$id = (int) $_SESSION['wpsqt']['item_id'];
 	$result = $wpdb->get_row("SELECT * FROM `".WPSQT_TABLE_SURVEY_CACHE."` WHERE item_id = '".$id."'", ARRAY_A);
 	$sections = unserialize($result['sections']);
-	require_once(WPSQT_DIR.'pages/admin/surveys/result.total.script.php');
+	require_once(WPSQT_DIR.'pages/admin/surveys/result.total.script.site.php');
 } else { ?>
 
 <p>Thank you for completing our survey!</p>
