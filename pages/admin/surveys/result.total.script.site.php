@@ -77,14 +77,14 @@
 							echo 'Something went really wrong, please report this bug to the forum. Here\'s a var dump which might make you feel better.<pre>'; var_dump($question); echo '</pre>';
 					  } ?>
 					<div class="wpsqt-question-info">
-						<strong>Question Info</strong><br />
+						<div class="wpsqt-question-title">Question Info</div>
 						<?php for ($i = 0; $i < count($nameArray); $i++) {
-							echo $nameArray[$i].':&nbsp;'.$valueArray[$i].'&nbsp;entries<br />';
+							echo '<div class="wpsqt-question-response">'.$nameArray[$i].':&nbsp;'.$valueArray[$i].'&nbsp;entries</div>';
 						} ?>
 	<?php $givenAnswers = $wpdb->get_row("SELECT `sections` FROM `".WPSQT_TABLE_RESULTS."` ORDER BY `id` DESC LIMIT 1", ARRAY_A);
 	$givenAnswers = unserialize($givenAnswers['sections']);
 	$givenAnswers = $givenAnswers[$sectionKey]['answers'][$questonKey]['given'];
-	echo 'You entered: ';
+	echo '<div class="wpsqt-question-response-you">You entered: ';
 	if (is_array($givenAnswers)) {
 		foreach ($givenAnswers as $givenAnswer) {
 			foreach($_SESSION['wpsqt'][$_SESSION['wpsqt']['current_id']]['sections'][$sectionKey]['questions'] as $question) {
@@ -96,7 +96,8 @@
 	} else {
 		echo $givenAnswers;
 	}
-	?>
+?>
+</div>
 					</div>
 					</div>
 					<?php } ?>
