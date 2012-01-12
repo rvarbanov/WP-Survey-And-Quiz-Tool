@@ -606,11 +606,11 @@ class Wpsqt_Shortcode {
 								$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$i] = array('count' => 0);
 							}
 						} else {
-							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['stronglydisagree'] = array('count' => 0);
-							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['disagree'] = array('count' => 0);
-							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['noopinion'] = array('count' => 0);
-							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['agree'] = array('count' => 0);
-							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['stronglyagree'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['Strongly Disagree'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['Disagree'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['No Opinion'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['Agree'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['Strongly Agree'] = array('count' => 0);
 						}
 					}
 				} elseif ( $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Free Text" ){
