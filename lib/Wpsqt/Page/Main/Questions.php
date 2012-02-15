@@ -10,6 +10,13 @@
 	 */
 
 class Wpsqt_Page_Main_Question extends Wpsqt_Page {
+
+	private function _updateQuestionOrder($idOrder) {
+		$idOrder = explode(',', $idOrder); array_pop($idOrder);
+		for ($i = 1; $i <= count($idOrder); $i++) {
+			// $i is order number, $idOrder[$i] is the id that is associated with that order.
+		}
+	}
 	
 	/**
 	 * (non-PHPdoc)
@@ -20,7 +27,8 @@ class Wpsqt_Page_Main_Question extends Wpsqt_Page {
 		global $wpdb;
 
 		if (isset($_GET['order'])) {
-			
+			$this->_updateQuestionOrder($_GET['order']);
+			exit;
 		}
 		
 		$questions = Wpsqt_System::getQuizQuestionTypes();		
