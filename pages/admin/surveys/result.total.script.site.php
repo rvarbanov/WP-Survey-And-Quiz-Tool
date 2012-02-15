@@ -98,7 +98,7 @@
 			echo $givenAnswers;
 		}
 	} else {
-		echo '<div class="wpsqt-question-response-you">You didn\'t answer this question</div>';
+		echo '<div class="wpsqt-question-response-you">You didn\'t answer this question';
 	}
 ?>
 </div>
