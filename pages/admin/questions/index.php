@@ -44,7 +44,6 @@
 		   <?php echo Wpsqt_Core::getPaginationLinks($currentPage, $numberOfPages);  ?>
 		</div>
 	</div>
-	
 	<table class="widefat">
 		<thead>
 			<tr>
@@ -76,7 +75,7 @@
 						$count++;
 						$question = Wpsqt_System::unserializeQuestion($rawQuestion, $_GET['subsection']);
 						?>
-			<tr class="<?php echo ( $count % 2 ) ?  'wpsqt-odd' : 'wpsqt-even'; ?>">
+			<tr class="<?php echo ( $count % 2 ) ?  'wpsqt-odd' : 'wpsqt-even'; ?>" id="<?php echo $question['id']; ?>">
 				<td><?php echo $question['id']; ?></td>
 				<td><?php echo stripslashes($question['name']); ?></td>
 				<td><?php echo ucfirst( stripslashes($question['type']) ); ?></td>
