@@ -187,6 +187,15 @@ class Wpsqt_Shortcode {
 			}
 		}
 
+		// Checks if limiting by cookie is enabled and if the user has already taken it
+		if (isset($_SESSION['wpsqt'][$quizName]['details']['limit_one_cookie']) && $_SESSION['wpsqt'][$quizName]['details']['limit_one_cookie'] == 'yes') {
+			$quizNameEscaped = str_replace(" ", "_", $quizName);
+			if (isset($_COOKIE['wpsqt_'.$quizNameEscaped.'_taken']) && $_COOKIE['wpsqt_'.$quizNameEscaped.'_taken'] == 'yes') {
+				echo 'You appear to have already taken this '.$this->_type.'.';
+				return;
+			}
+		}
+
 
 		// handle contact form and all the stuff that comes with it.
 		if ( isset($_SESSION['wpsqt'][$quizName]['details']['contact']) && $_SESSION['wpsqt'][$quizName]['details']['contact'] == "yes" && $this->_step <= 1 ){
@@ -542,6 +551,21 @@ class Wpsqt_Shortcode {
 
 		if ( $this->_type == "survey" || $this->_type == "poll" ){
 			$this->_cacheSurveys();
+		}
+		
+		if ( isset($_SESSION['wpsqt'][$quizName]['details']['limit_one_cookie']) && $_SESSION['wpsqt'][$quizName]['details']['limit_one_cookie'] == 'yes' ){
+			// Create the cookie
+			?>
+			<script type="text/javascript">
+			var c_name = "wpsqt_<?php echo $quizName; ?>_taken";
+			var value = "yes"
+			var exdays = 365;
+			var exdate = new Date();
+			exdate.setDate(exdate.getDate() + exdays);
+			var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+			document.cookie=c_name + "=" + c_value;
+			</script>
+			<?php
 		}
 
 		require_once Wpsqt_Core::pageView('site/'.$this->_type.'/finished.php');
