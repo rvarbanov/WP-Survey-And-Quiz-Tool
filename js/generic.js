@@ -100,7 +100,18 @@ jQuery(document).ready( function(){
 		});
 		
 		jQuery("#sub_form_"+questionType.replace(" ", "").toLowerCase()).show();
-		
+
+		if (questionType == 'Likert') {
+			var likertScale = jQuery("#wpsqt_likert_scale");
+			if (likertScale.length == 0) {
+				var html = '<tr id="wpsqt_likert_scale"><th scope="row">Likert Scale</th><td valign="top"><select id="wpsqt_likertscale" name="wpsqt_likertscale"><option value="10">10</option><option value="5">5</option><option value="3">3</option><option value="Agree/Disagree">Agree/Disagree</option></select></td><td>What should the likert display to?</td></tr>';
+				jQuery('#wpsqt_type').parent().parent().after(html);
+			} else {
+				jQuery("#wpsqt_likert_scale").show();
+			}
+		} else {
+			jQuery("#wpsqt_likert_scale").hide();
+		}
 	});
 	
 	jQuery('.sub_form').each(function() {
