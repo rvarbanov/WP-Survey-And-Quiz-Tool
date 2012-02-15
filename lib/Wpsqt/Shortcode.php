@@ -402,7 +402,7 @@ class Wpsqt_Shortcode {
 		$quizName = $_SESSION["wpsqt"]["current_id"];
 		$sectionKey = $this->_key;
 		$section = $_SESSION["wpsqt"][$quizName]["sections"][$sectionKey];
-		$orderBy = ($section["order"] == "random") ? "RAND()" : "id ".strtoupper($section["order"]);
+		$orderBy = ($section["order"] == "random") ? "RAND()" : "`order` ".strtoupper($section["order"]);
 		$_SESSION["wpsqt"][$quizName]["sections"][$sectionKey]["questions"] = array();
 
 		if ( !empty($_SESSION["wpsqt"][$quizName]["sections"][$sectionKey]['limit']) ){
