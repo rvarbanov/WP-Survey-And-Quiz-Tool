@@ -65,6 +65,14 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 == ChangeLog ==
 
+= 2.9.1 =
+
+* Quiz duplication
+* Change the order of questions
+* Minor styling tweaks to admin panels
+* Graphs fixed
+* Cookies for limiting (as well as or instead of IP/WP User limiting)
+
 = 2.9 =
 
 * Added results to finish display of surveys - like polls
