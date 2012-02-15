@@ -83,18 +83,22 @@
 						} ?>
 	<?php $givenAnswers = $wpdb->get_row("SELECT `sections` FROM `".WPSQT_TABLE_RESULTS."` ORDER BY `id` DESC LIMIT 1", ARRAY_A);
 	$givenAnswers = unserialize($givenAnswers['sections']);
-	$givenAnswers = $givenAnswers[$sectionKey]['answers'][$questonKey]['given'];
-	echo '<div class="wpsqt-question-response-you">You entered: ';
-	if (is_array($givenAnswers)) {
-		foreach ($givenAnswers as $givenAnswer) {
-			foreach($_SESSION['wpsqt'][$_SESSION['wpsqt']['current_id']]['sections'][$sectionKey]['questions'] as $question) {
-				if ($question['id'] == $questonKey) {
-					echo $question['answers'][$givenAnswer]['text'].' ';
+	if (isset($givenAnswers[$sectionKey]['answers'][$questonKey]['given'])) {
+		$givenAnswers = $givenAnswers[$sectionKey]['answers'][$questonKey]['given'];
+		echo '<div class="wpsqt-question-response-you">You entered: ';
+		if (is_array($givenAnswers)) {
+			foreach ($givenAnswers as $givenAnswer) {
+				foreach($_SESSION['wpsqt'][$_SESSION['wpsqt']['current_id']]['sections'][$sectionKey]['questions'] as $question) {
+					if ($question['id'] == $questonKey) {
+						echo $question['answers'][$givenAnswer]['text'].' ';
+					}
 				}
 			}
+		} else {
+			echo $givenAnswers;
 		}
 	} else {
-		echo $givenAnswers;
+		echo '<div class="wpsqt-question-response-you">You didn\'t answer this question</div>';
 	}
 ?>
 </div>
