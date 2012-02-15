@@ -62,7 +62,7 @@
 									$maxValue = $answer['count'];
 							}
 							// Makes chart wider if its an agree/disagree question
-							if (array_key_exists('disagree', $question['answers'])) {
+							if (array_key_exists('Disagree', $question['answers'])) {
 								$googleChartUrl .= '&chs=500x250&chbh=r,70,10';
 								$googleChartUrl .= '&chxt=x&chxl=0:|Strongly Disagree|Disagree|No Opinion|Agree|Strongly Agree'; // Sets labelling to x-axis only
 							} else {
