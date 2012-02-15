@@ -38,7 +38,6 @@ class Wpsqt_Page_Main_Question extends Wpsqt_Page {
 
 		if (isset($_GET['order'])) {
 			$this->_updateQuestionOrder($_GET['order'], $_GET['id']);
-			exit;
 		}
 		
 		$questions = Wpsqt_System::getQuizQuestionTypes();		

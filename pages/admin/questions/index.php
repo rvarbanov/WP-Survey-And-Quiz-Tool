@@ -56,6 +56,7 @@ var saveOrder = function() {
 		<?php if ( isset($_GET['id']) ){ ?>
 		<div class="alignleft">
 			<a href="<?php echo WPSQT_URL_MAIN; ?>&section=questionadd&subsection=<?php esc_html_e($_GET['subsection']); ?>&id=<?php esc_html_e($_GET['id']); ?>" class="button-secondary" title="Add New Question">Add New Question</a>
+			<a href="#" title="Save Order" onclick="saveOrder();" class="button-secondary">Save Order</a>
 		</div>
 		<?php } ?>		
 		<div class="tablenav-pages">
@@ -112,7 +113,7 @@ var saveOrder = function() {
 		<?php if ( isset($_GET['id']) ){ ?>
 		<div class="alignleft">
 			<a href="<?php echo WPSQT_URL_MAIN; ?>&section=questionadd&subsection=<?php esc_html_e($_GET['subsection']); ?>&id=<?php esc_html_e($_GET['id']); ?>" class="button-secondary" title="Add New Question">Add New Question</a>
-			<a href="#" title="Save Order" onclick="saveOrder();">Save Order</a>
+			<a href="#" title="Save Order" onclick="saveOrder();" class="button-secondary">Save Order</a>
 		</div>
 		<?php } ?>		
 		<div class="tablenav-pages">
