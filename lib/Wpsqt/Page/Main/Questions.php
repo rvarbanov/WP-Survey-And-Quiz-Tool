@@ -18,6 +18,10 @@ class Wpsqt_Page_Main_Question extends Wpsqt_Page {
 	public function process(){
 		
 		global $wpdb;
+
+		if (isset($_GET['order'])) {
+			
+		}
 		
 		$questions = Wpsqt_System::getQuizQuestionTypes();		
 		
