@@ -349,7 +349,13 @@ class Wpsqt_Shortcode {
 							$incorrect += $questionData["points"];
 							$answerMarked['mark'] = "incorrect";
 						}
+					} else if ($questionData['type'] == "Likert Matrix") {
+						// foreach ($givenAnswers as $givenAnswer) {
+						// 	$answerData = explode("_", $givenAnswer);
 
+						// 	// Loads the non standard likert matrix answers array into a more standard form that is expected
+						// 	//$_SESSION['wpsqt'][$quizName]["sections"][$pastSectionKey]['answers'][$questionData['id']][$answerData[0]] = $answerData[1];
+						// }
 					} else {
 							$canAutoMark = false;
 					}// END if section type == multiple
@@ -624,7 +630,16 @@ class Wpsqt_Shortcode {
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answerKey] = array("text" => $answers['text'],"count" => 0);
 						}
 					 }
-
+				} elseif ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Likert Matrix") {
+					if (empty($cachedSections[$sectionKey]['questions'][$question['id']]['answers'])) {
+						foreach ($question['answers'] as $key => $answer) {
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['1'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['2'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['3'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['4'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['5'] = array('count' => 0);
+						}
+					}
 				} elseif ( $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Likert" ||
 						   $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Scale" ){
 				 	if ( empty($cachedSections[$sectionKey]['questions'][$question['id']]['answers']) ) {
@@ -647,7 +662,7 @@ class Wpsqt_Shortcode {
 					}
 					continue;
 				} else {
-					if ( empty($cachedSections[$sectionKey]['questions'][$question['id']]['answers']) ) {
+					if ( empty($cachedSections[$sectionKey]['questions'][$question['id']]['answers']) && $cachedSections[$sectionKey]['questions'][$question['id']]['type'] != "Likert Matrix" ) {
 						$cachedSections[$sectionKey]['questions'][$question['id']]['answers'] = 'None Cached - Not a default question type.';
 					}
 					continue;
@@ -674,6 +689,12 @@ class Wpsqt_Shortcode {
 						}
 					} else {
 						$givenAnswer = NULL;
+					}
+				}
+				if ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Likert Matrix") {
+					foreach ($section['answers'][$question['id']]['given'] as $givenAnswerData) {
+						$givenAnswerData = explode("_", $givenAnswerData);
+						$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswerData[0]][$givenAnswerData[1]]['count'] += 1;
 					}
 				}
 				if (isset($question['likertscale']) && $question['likertscale'] == 'Agree/Disagree') {

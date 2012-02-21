@@ -138,6 +138,17 @@ jQuery(document).ready( function(){
 		jQuery('#row_count').val(rowCount+1);
 		return false;
 	});
+
+	jQuery("#wsqt_likertmatrix_add").click( function(){
+		var rowCount = jQuery('#sub_form_likertmatrix tbody tr').length;
+		var html = '';
+		html += '<tr>';
+		html += '<td><input type="text" name="likertmatrix_name['+rowCount+']" value="" /></td>'; 
+		html += '</tr>';
+		jQuery('#sub_form_likertmatrix tbody tr:last').after(html);
+		jQuery('#row_count').val(rowCount+1);
+		return false;
+	});
 	
 });
 
