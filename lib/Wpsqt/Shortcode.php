@@ -192,6 +192,10 @@ class Wpsqt_Shortcode {
 			$quizNameEscaped = str_replace(" ", "_", $quizName);
 			if (isset($_COOKIE['wpsqt_'.$quizNameEscaped.'_taken']) && $_COOKIE['wpsqt_'.$quizNameEscaped.'_taken'] == 'yes') {
 				echo 'You appear to have already taken this '.$this->_type.'.';
+				$id = (int) $_SESSION['wpsqt']['item_id'];
+				$result = $wpdb->get_row("SELECT * FROM `".WPSQT_TABLE_SURVEY_CACHE."` WHERE item_id = '".$id."'", ARRAY_A);
+				$sections = unserialize($result['sections']);
+				require_once WPSQT_DIR.'/pages/admin/surveys/result.total.script.site.php';
 				return;
 			}
 		}
