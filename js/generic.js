@@ -112,6 +112,18 @@ jQuery(document).ready( function(){
 		} else {
 			jQuery("#wpsqt_likert_scale").hide();
 		}
+
+		if (questionType == 'Likert Matrix') {
+			var likertScale = jQuery("#wpsqt_likert_matrix_scale");
+			if (likertScale.length == 0) {
+				var html = '<tr><th scope="row">Likert Matrix Scale</th><td valign="top"><select id="wpsqt_likertmatrixscale" name="wpsqt_likertmatrixscale"><option value="1-5">1-5</option><option value="Disagree/Agree">Disagree/Agree</option></select></td><td>Scale 1-5 or Disagree/Agree</td></tr>';
+				jQuery('#wpsqt_type').parent().parent().after(html);
+			} else {
+				jQuery("#wpsqt_likert_matrix_scale").show();
+			}
+		} else {
+			jQuery("#wpsqt_likert_matrix_scale").hide();
+		}
 	});
 	
 	jQuery('.sub_form').each(function() {
@@ -150,6 +162,7 @@ jQuery(document).ready( function(){
 		return false;
 	});
 	
+	jQuery("#wpsqt_type").change();
 });
 
 

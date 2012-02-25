@@ -31,7 +31,8 @@ class Wpsqt_Form_Question extends Wpsqt_Form {
 							 'add_text' => false,
 							 'required' => false,
 					 		 'image' => false,
-					 		 'likertscale' => false);
+					 		 'likertscale' => false,
+					 		 'likertmatrixscale' => false);
 		}
 		$typeHelpText = "";
 		foreach ( $questionTypes as $type => $text ){
