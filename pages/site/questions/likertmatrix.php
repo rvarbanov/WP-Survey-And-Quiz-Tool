@@ -2,11 +2,19 @@
 <thead>
 	<tr>
 		<td></td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
+		<?php if ($question['likertmatrixscale'] == '1-5') { ?>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		<?php } else { ?>
+			<td>Strongly Disagree</td>
+			<td>Disagree</td>
+			<td>No Opinion</td>
+			<td>Agree</td>
+			<td>Strongly Agree</td>
+		<?php } ?>
 	</tr>
 </thead>
 <?php foreach ($question['answers'] as $key => $answer) { ?>
