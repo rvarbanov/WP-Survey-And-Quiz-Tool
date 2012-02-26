@@ -74,6 +74,11 @@
 							$googleChartUrl .= '&chd=t:'.implode(',', $valueArray); // Chart data
 							?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
 					  } else if ($question['type'] == "Likert Matrix") {
+					  	if (isset($question['scale']) && $question['scale'] == 'disagree/agree') {
+				  			$wordScale = true;
+				  		} else {
+				  			$wordScale = false;
+				  		}
 					  	foreach($question['answers'] as $optionkey => $matrixOption) {
 					  			$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs';
 								$valueArray    = array();
@@ -90,7 +95,15 @@
 								}
 
 								$googleChartUrl .= '&chs=350x250';
-								$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only
+
+								if (isset($wordScale) && $wordScale == true) {
+									$googleChartUrl .= '&chxt=x&chxl=0:|Strongly Disagree|Disagree|No Opinion|Agree|Strongly Agree'; // Sets labelling to x-axis only and labels with numbers
+									$googleChartUrl .= '&chs=500x250&chbh=r,70,10'; // Makes chart wider		
+								} else {
+									$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only and labels with numbers
+								}
+
+								
 								$googleChartUrl .= '&chm=N,000000,0,,10|N,000000,1,,10|N,000000,2,,10'; // Adds the count above bars
 								$googleChartUrl .= '&chds=0,'.(++$maxValue); // Sets scaling to a little bit more than max value
 								$googleChartUrl .= '&chd=t:'.implode(',', $valueArray); // Chart data
