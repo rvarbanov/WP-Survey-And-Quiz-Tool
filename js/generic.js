@@ -102,27 +102,15 @@ jQuery(document).ready( function(){
 		jQuery("#sub_form_"+questionType.replace(" ", "").toLowerCase()).show();
 
 		if (questionType == 'Likert') {
-			var likertScale = jQuery("#wpsqt_likert_scale");
-			if (likertScale.length == 0) {
-				var html = '<tr id="wpsqt_likert_scale"><th scope="row">Likert Scale</th><td valign="top"><select id="wpsqt_likertscale" name="wpsqt_likertscale"><option value="10">10</option><option value="5">5</option><option value="3">3</option><option value="Agree/Disagree">Agree/Disagree</option></select></td><td>What should the likert display to?</td></tr>';
-				jQuery('#wpsqt_type').parent().parent().after(html);
-			} else {
-				jQuery("#wpsqt_likert_scale").show();
-			}
+			jQuery("#wpsqt_likertscale").parent().parent().show();
 		} else {
-			jQuery("#wpsqt_likert_scale").hide();
+			jQuery("#wpsqt_likertscale").parent().parent().hide();
 		}
 
 		if (questionType == 'Likert Matrix') {
-			var likertScale = jQuery("#wpsqt_likert_matrix_scale");
-			if (likertScale.length == 0) {
-				var html = '<tr><th scope="row">Likert Matrix Scale</th><td valign="top"><select id="wpsqt_likertmatrixscale" name="wpsqt_likertmatrixscale"><option value="1-5">1-5</option><option value="Disagree/Agree">Disagree/Agree</option></select></td><td>Scale 1-5 or Disagree/Agree</td></tr>';
-				jQuery('#wpsqt_type').parent().parent().after(html);
-			} else {
-				jQuery("#wpsqt_likert_matrix_scale").show();
-			}
+			jQuery("#wpsqt_likertmatrixscale").parent().parent().show();
 		} else {
-			jQuery("#wpsqt_likert_matrix_scale").hide();
+			jQuery("#wpsqt_likertmatrixscale").parent().parent().hide();
 		}
 	});
 	
