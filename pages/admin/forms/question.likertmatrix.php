@@ -20,8 +20,7 @@
 				} ?>
 		</tbody>
 	</table>
-	
-	
+
 	<p><a href="#" class="button-secondary" title="Add New Answer" id="wsqt_likertmatrix_add">Add New Answer</a></p>
 			
 </div>

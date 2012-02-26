@@ -1,7 +1,7 @@
 <table class="wpsqt_likertmatrix_question">
 <thead>
 	<tr>
-		<td></td>
+		<td width="20%"></td>
 		<?php if ($question['likertmatrixscale'] == '1-5') { ?>
 			<td>1</td>
 			<td>2</td>
@@ -9,11 +9,11 @@
 			<td>4</td>
 			<td>5</td>
 		<?php } else { ?>
-			<td>Strongly Disagree</td>
-			<td>Disagree</td>
-			<td>No Opinion</td>
-			<td>Agree</td>
-			<td>Strongly Agree</td>
+			<td width="20%">Strongly Disagree</td>
+			<td width="20%">Disagree</td>
+			<td width="20%">No Opinion</td>
+			<td width="20%">Agree</td>
+			<td width="20%">Strongly Agree</td>
 		<?php } ?>
 	</tr>
 </thead>
