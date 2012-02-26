@@ -72,6 +72,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Minor styling tweaks to admin panels
 * Graphs fixed
 * Cookies for limiting (as well as or instead of IP/WP User limiting)
+* Added likert matrix question type
 
 = 2.9 =
 
