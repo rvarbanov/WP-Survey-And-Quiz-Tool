@@ -130,7 +130,11 @@
 				foreach($_SESSION['wpsqt'][$_SESSION['wpsqt']['current_id']]['sections'][$sectionKey]['questions'] as $question) {
 					if ($question['id'] == $questonKey) {
 						if ($question['type'] == 'Likert Matrix') {
-							$givenAnswerDetails = explode("_", $givenAnswer);
+							if (is_array($givenAnswer)) {
+								$givenAnswerDetails = explode("_", $givenAnswer[0]);
+							} else {
+								$givenAnswerDetails = explode("_", $givenAnswer);
+							}
 							echo '<em>'.$givenAnswerDetails[0].'</em>: '.$givenAnswerDetails[1];
 						} else {
 							echo $question['answers'][$givenAnswer]['text'];
