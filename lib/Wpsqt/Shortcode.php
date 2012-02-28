@@ -624,7 +624,7 @@ class Wpsqt_Shortcode {
 					 }
 				} elseif ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Likert Matrix") {
 					// Enables the results script to have access to the scale of the likert matrix
-					if ($_SESSION['wpsqt'][$quizName]['sections'][$sectionKey]['questions'][$questionKey]['likertmatrixscale'] == 'Disagree/Agree') {
+					if (isset($_SESSION['wpsqt'][$quizName]['sections'][$sectionKey]['questions'][$questionKey]['likertmatrixscale']) && $_SESSION['wpsqt'][$quizName]['sections'][$sectionKey]['questions'][$questionKey]['likertmatrixscale'] == 'Disagree/Agree') {
 						$cachedSections[$sectionKey]['questions'][$question['id']]['scale'] = 'disagree/agree';
 					} else {
 						$cachedSections[$sectionKey]['questions'][$question['id']]['scale'] = '1-5';
