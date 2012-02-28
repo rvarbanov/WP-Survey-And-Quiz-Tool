@@ -63,8 +63,14 @@
 				} else if (ucfirst($questionArray['type']) == 'Likert Matrix') {
 					echo '<ul>';
 					foreach ($section['answers'][$questionId]['given'] as $givenAnswer) {
-						$givenAnswer = explode("_", $givenAnswer);
-						echo '<li><strong>'.$givenAnswer[0].'</strong> - '.$givenAnswer[1].'</li>';
+						if (is_array($givenAnswer)) {
+							$otherText = $givenAnswer['text'];
+							$givenAnswer = explode("_", $givenAnswer[0]);
+							echo '<li><strong>'.$otherText.'</strong> - '.$givenAnswer[1].'</li>';
+						} else {
+							$givenAnswer = explode("_", $givenAnswer);
+							echo '<li><strong>'.$givenAnswer[0].'</strong> - '.$givenAnswer[1].'</li>';
+						}
 					}
 					echo '</ul>';
 				} else {
