@@ -349,13 +349,6 @@ class Wpsqt_Shortcode {
 							$incorrect += $questionData["points"];
 							$answerMarked['mark'] = "incorrect";
 						}
-					} else if ($questionData['type'] == "Likert Matrix") {
-						// foreach ($givenAnswers as $givenAnswer) {
-						// 	$answerData = explode("_", $givenAnswer);
-
-						// 	// Loads the non standard likert matrix answers array into a more standard form that is expected
-						// 	//$_SESSION['wpsqt'][$quizName]["sections"][$pastSectionKey]['answers'][$questionData['id']][$answerData[0]] = $answerData[1];
-						// }
 					} else {
 							$canAutoMark = false;
 					}// END if section type == multiple
@@ -366,7 +359,6 @@ class Wpsqt_Shortcode {
 
 					$answerMarked["given"] = $givenAnswers;
 					$_SESSION["wpsqt"][$quizName]["sections"][$pastSectionKey]["answers"][$questionId] = $answerMarked;
-
 				}// END foreach answer
 				$_SESSION["wpsqt"][$quizName]["sections"][$pastSectionKey]["stats"] = array("correct" => $correct, "incorrect" => $incorrect);
 				$_SESSION["wpsqt"][$quizName]["sections"][$pastSectionKey]["can_automark"] = $canAutoMark;
@@ -705,9 +697,15 @@ class Wpsqt_Shortcode {
 				}
 				if ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Likert Matrix") {
 					foreach ($section['answers'][$question['id']]['given'] as $givenAnswerData) {
-						echo '<pre>'; var_dump($givenAnswerData); echo '</pre>';
-						$givenAnswerData = explode("_", $givenAnswerData);
-						$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswerData[0]][$givenAnswerData[1]]['count'] += 1;
+						if (is_array($givenAnswerData)) {
+							// Other field:
+							$otherText = $givenAnswerData['text'];
+							$givenAnswerData = explode("_", $givenAnswerData[0]);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswerData[0]][$givenAnswerData[1]]['count'] += 1;
+						} else {
+							$givenAnswerData = explode("_", $givenAnswerData);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswerData[0]][$givenAnswerData[1]]['count'] += 1;
+						}
 					}
 				}
 				if (isset($question['likertscale']) && $question['likertscale'] == 'Agree/Disagree') {

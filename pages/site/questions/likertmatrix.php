@@ -30,12 +30,12 @@
 
 <?php if ($question['likertmatrixcustom'] == 'yes') { ?>
 	<tr>
-		<td>Other: <input type="text" /></td>
-		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="other_1" id="answer_<?php echo $questionKey; ?>_custom" /></td>
-		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="other_2" id="answer_<?php echo $questionKey; ?>_custom" /></td>
-		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="other_3" id="answer_<?php echo $questionKey; ?>_custom" /></td>
-		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="other_4" id="answer_<?php echo $questionKey; ?>_custom" /></td>
-		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="other_5" id="answer_<?php echo $questionKey; ?>_custom" /></td>
+		<td>Other: <input type="text" name="answers[<?php echo $questionKey; ?>][custom][text]" id="answer_<?php echo $questionKey; ?>_custom_text" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>][custom][]" value="other_1" id="answer_<?php echo $questionKey; ?>_custom_1" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>][custom][]" value="other_2" id="answer_<?php echo $questionKey; ?>_custom_2" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>][custom][]" value="other_3" id="answer_<?php echo $questionKey; ?>_custom_3" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>][custom][]" value="other_4" id="answer_<?php echo $questionKey; ?>_custom_4" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>][custom][]" value="other_5" id="answer_<?php echo $questionKey; ?>_custom_5" /></td>
 	</tr>
 <?php } ?>
 
