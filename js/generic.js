@@ -109,8 +109,10 @@ jQuery(document).ready( function(){
 
 		if (questionType == 'Likert Matrix') {
 			jQuery("#wpsqt_likertmatrixscale").parent().parent().show();
+			jQuery("#wpsqt_likertmatrixcustom_no").parent().parent().show();
 		} else {
 			jQuery("#wpsqt_likertmatrixscale").parent().parent().hide();
+			jQuery("#wpsqt_likertmatrixcustom_no").parent().parent().hide();
 		}
 	});
 	

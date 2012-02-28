@@ -27,4 +27,16 @@
 		<td><input type="radio" name="answers[<?php echo $questionKey; ?>][<?php echo $key; ?>]" value="<?php echo $answer['text']; ?>_5" id="answer_<?php echo $key; ?>" /></td>
 	</tr>
 <?php } ?>
+
+<?php if ($question['likertmatrixcustom'] == 'yes') { ?>
+	<tr>
+		<td>Other: <input type="text" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="1" id="answer_<?php echo $questionKey; ?>_custom" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="2" id="answer_<?php echo $questionKey; ?>_custom" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="3" id="answer_<?php echo $questionKey; ?>_custom" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="4" id="answer_<?php echo $questionKey; ?>_custom" /></td>
+		<td><input type="radio" name="answers[<?php echo $questionKey; ?>]['custom']" value="5" id="answer_<?php echo $questionKey; ?>_custom" /></td>
+	</tr>
+<?php } ?>
+
 </table>
