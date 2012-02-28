@@ -645,6 +645,11 @@ class Wpsqt_Shortcode {
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['3'] = array('count' => 0);
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['4'] = array('count' => 0);
 							$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$answer['text']]['5'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['other']['1'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['other']['2'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['other']['3'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['other']['4'] = array('count' => 0);
+							$cachedSections[$sectionKey]['questions'][$question['id']]['answers']['other']['5'] = array('count' => 0);
 						}
 					}
 				} elseif ( $cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Likert" ||
@@ -700,6 +705,7 @@ class Wpsqt_Shortcode {
 				}
 				if ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] == "Likert Matrix") {
 					foreach ($section['answers'][$question['id']]['given'] as $givenAnswerData) {
+						echo '<pre>'; var_dump($givenAnswerData); echo '</pre>';
 						$givenAnswerData = explode("_", $givenAnswerData);
 						$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswerData[0]][$givenAnswerData[1]]['count'] += 1;
 					}
