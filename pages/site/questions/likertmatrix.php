@@ -28,7 +28,7 @@
 	</tr>
 <?php } ?>
 
-<?php if (isset($question['likertmatrixcustom'] && $question['likertmatrixcustom'] == 'yes') { ?>
+<?php if (isset($question['likertmatrixcustom']) && $question['likertmatrixcustom'] == 'yes') { ?>
 	<tr>
 		<td>Other: <input type="text" name="answers[<?php echo $questionKey; ?>][custom][text]" id="answer_<?php echo $questionKey; ?>_custom_text" /></td>
 		<td><input type="radio" name="answers[<?php echo $questionKey; ?>][custom][]" value="other_1" id="answer_<?php echo $questionKey; ?>_custom_1" /></td>
