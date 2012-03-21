@@ -98,7 +98,7 @@
 
 								if (isset($wordScale) && $wordScale == true) {
 									$googleChartUrl .= '&chxt=x&chxl=0:|Strongly Disagree|Disagree|No Opinion|Agree|Strongly Agree'; // Sets labelling to x-axis only and labels with numbers
-									$googleChartUrl .= '&chs=500x250&chbh=r,70,10'; // Makes chart wider		
+									$googleChartUrl .= '&chs=500x250&chbh=r,5,10'; // Makes chart wider		
 								} else {
 									$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only and labels with numbers
 								}
