@@ -64,7 +64,7 @@
 							// Makes chart wider if its an agree/disagree question
 							if (array_key_exists('Disagree', $question['answers'])) {
 								$googleChartUrl .= '&chs=500x250&chbh=r,5,10';
-								$googleChartUrl .= '&chxt=x&chxl=0:|Strongly Disagree|Disagree|No Opinion|Agree|Strongly Agree'; // Sets labelling to x-axis only
+								$googleChartUrl .= '&chxt=x&chxl=0:|SD|Disagree|No Opinion|Agree|SA'; // Sets labelling to x-axis only
 							} else {
 								$googleChartUrl .= '&chs=350x250';
 								$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only
@@ -72,7 +72,13 @@
 							$googleChartUrl .= '&chm=N,000000,0,,10|N,000000,1,,10|N,000000,2,,10'; // Adds the count above bars
 							$googleChartUrl .= '&chds=0,'.(++$maxValue); // Sets scaling to a little bit more than max value
 							$googleChartUrl .= '&chd=t:'.implode(',', $valueArray); // Chart data
-							?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
+							?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" />
+							<div class="wpsqt-chart-legend">
+								<ul>
+									<li>SD - Strongly disagree</li>
+									<li>SA - Strongly agree</li>
+								</ul>
+							</div><?php
 					  } else if ($question['type'] == "Likert Matrix") {
 					  	if (isset($question['scale']) && $question['scale'] == 'disagree/agree') {
 				  			$wordScale = true;
@@ -97,7 +103,7 @@
 								$googleChartUrl .= '&chs=350x250';
 
 								if (isset($wordScale) && $wordScale == true) {
-									$googleChartUrl .= '&chxt=x&chxl=0:|Strongly Disagree|Disagree|No Opinion|Agree|Strongly Agree'; // Sets labelling to x-axis only and labels with numbers
+									$googleChartUrl .= '&chxt=x&chxl=0:|SD|Disagree|No Opinion|Agree|SA'; // Sets labelling to x-axis only and labels with numbers
 									$googleChartUrl .= '&chs=500x250&chbh=r,5,10'; // Makes chart wider		
 								} else {
 									$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only and labels with numbers
@@ -109,7 +115,14 @@
 								$googleChartUrl .= '&chd=t:'.implode(',', $valueArray); // Chart data
 
 								echo '<h4>'.$optionkey.'</h4>';
-								?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
+								?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" />
+								<div class="wpsqt-chart-legend">
+									<ul>
+										<li>SD - Strongly disagree</li>
+										<li>SA - Strongly agree</li>
+									</ul>
+								</div>
+								<?php
 					  		}
 					  } else {
 							echo 'Something went really wrong, please report this bug to the forum. Here\'s a var dump which might make you feel better.<pre>'; var_dump($question); echo '</pre>';
