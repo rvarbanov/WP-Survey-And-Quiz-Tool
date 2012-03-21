@@ -12,7 +12,7 @@
 
 			<?php if ( $question['type'] == "Multiple Choice" ||
 					   $question['type'] == "Dropdown" ) {
-						$googleChartUrl = 'http://chart.apis.google.com/chart?chs=400x185&cht=p&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
+						$googleChartUrl = 'http://chart.apis.google.com/chart?chs=400x185&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333&cht=p&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
 						$valueArray    = array();
 						$nameArray     = array();
 					   foreach ( $question['answers'] as $answer ) {
@@ -47,7 +47,7 @@
 
 						}
 					  } else if ($question['type'] == "Likert") {
-							$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
+							$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
 							$valueArray    = array();
 							$nameArray     = array();
 							$maxValue = 0;
@@ -63,8 +63,8 @@
 							}
 							// Makes chart wider if its an agree/disagree question
 							if (array_key_exists('Disagree', $question['answers'])) {
-								$googleChartUrl .= '&chs=500x250&chbh=r,5,10';
-								$googleChartUrl .= '&chxt=x&chxl=0:|SD|Disagree|No Opinion|Agree|SA'; // Sets labelling to x-axis only
+								$googleChartUrl .= '&chs=600x250&chbh=r,5,10';
+								$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only
 							} else {
 								$googleChartUrl .= '&chs=350x250';
 								$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only
@@ -72,13 +72,7 @@
 							$googleChartUrl .= '&chm=N,000000,0,,10|N,000000,1,,10|N,000000,2,,10'; // Adds the count above bars
 							$googleChartUrl .= '&chds=0,'.(++$maxValue); // Sets scaling to a little bit more than max value
 							$googleChartUrl .= '&chd=t:'.implode(',', $valueArray); // Chart data
-							?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" />
-							<div class="wpsqt-chart-legend">
-								<ul>
-									<li>SD - Strongly disagree</li>
-									<li>SA - Strongly agree</li>
-								</ul>
-							</div><?php
+							?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" /><?php
 					  } else if ($question['type'] == "Likert Matrix") {
 					  	if (isset($question['scale']) && $question['scale'] == 'disagree/agree') {
 				  			$wordScale = true;
@@ -86,7 +80,7 @@
 				  			$wordScale = false;
 				  		}
 					  	foreach($question['answers'] as $optionkey => $matrixOption) {
-					  			$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs';
+					  			$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333';
 								$valueArray    = array();
 								$nameArray     = array();
 								$maxValue = 0;
@@ -103,8 +97,8 @@
 								$googleChartUrl .= '&chs=350x250';
 
 								if (isset($wordScale) && $wordScale == true) {
-									$googleChartUrl .= '&chxt=x&chxl=0:|SD|Disagree|No Opinion|Agree|SA'; // Sets labelling to x-axis only and labels with numbers
-									$googleChartUrl .= '&chs=500x250&chbh=r,5,10'; // Makes chart wider		
+									$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only and labels with numbers
+									$googleChartUrl .= '&chs=600x250&chbh=r,5,10'; // Makes chart wider		
 								} else {
 									$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only and labels with numbers
 								}
@@ -116,12 +110,6 @@
 
 								echo '<h4>'.$optionkey.'</h4>';
 								?><img class="wpsqt-chart" src="<?php echo $googleChartUrl; ?>" alt="<?php echo $question['name']; ?>" />
-								<div class="wpsqt-chart-legend">
-									<ul>
-										<li>SD - Strongly disagree</li>
-										<li>SA - Strongly agree</li>
-									</ul>
-								</div>
 								<?php
 					  		}
 					  } else {
