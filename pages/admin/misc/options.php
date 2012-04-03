@@ -90,6 +90,14 @@
 				<td>This is the size of the text that will be used for the charts.</td>
 			</tr>
 			<tr>
+				<th scope="row">Chart Text Abbreviations</th>
+				<td>
+					<input type="radio" name="wpsqt_chart_abbreviation" value="yes" id="wpsqt_abbreviation_yes" <?php if ($chartAbbreviation == 'yes') { echo 'checked="checked"'; } ?> /> <label for="wpsqt_abbreviation_yes">Yes</label>
+					<input type="radio" name="wpsqt_chart_abbreviation" value="no" id="wpsqt_abbreviation_no" <?php if ($chartAbbreviation == 'no') { echo 'checked="checked"'; } ?> /> <label for="wpsqt_abbreviation_no">No</label>
+				</td>
+				<td>Apply the abbreviation <em>strngly</em> instead of <em>strongly</em>.</td>
+			</tr>
+			<tr>
 				<th scope="row">Support Us!</th>
 				<td><input type="radio" name="wpsqt_support_us" value="yes" id="support_yes" <?php if ( !isset($supportUs) || empty($supportUs) || $supportUs == 'yes' ){ ?> checked="yes"<?php }?>> <label for="support_yes"><strong>Yes!</strong></label>
 					<input type="radio" name="wpsqt_support_us" value="no" id="support_no" <?php if ($supportUs == 'no'){ ?> checked="yes"<?php }?>> <label for="support_no">No</label></td>

@@ -15,6 +15,7 @@
 			$chartHeight = get_option('wpsqt_chart_height');
 			$chartTextColour = get_option('wpsqt_chart_text_colour');
 			$chartTextSize = get_option('wpsqt_chart_text_size');
+			$chartAbbreviations = get_option('wpsqt_chart_abbreviation');
 			if (!isset($chartWidth) || $chartWidth == NULL)
 				$chartWidth = 400;
 			if (!isset($chartHeight) || $chartHeight == NULL)
@@ -80,7 +81,11 @@
 							// Makes chart wider if its an agree/disagree question
 							if (array_key_exists('Disagree', $question['answers'])) {
 								$googleChartUrl .= '&'.$chartSize.'&chbh=r,5,10';
-								$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only
+								if ($chartAbbreviations == 'yes') {
+									$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only
+								} else {
+									$googleChartUrl .= '&chxt=x&chxl=0:|Strongly Disagree|Disagree|No Opinion|Agree|Strongly Agree'; // Sets labelling to x-axis only
+								}
 							} else {
 								$googleChartUrl .= '&'.$chartSize;
 								$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only
@@ -113,7 +118,11 @@
 								$googleChartUrl .= '&'.$chartSize;
 
 								if (isset($wordScale) && $wordScale == true) {
-									$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only and labels with numbers
+									if ($chartAbbreviations == 'yes') {
+										$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only
+									} else {
+										$googleChartUrl .= '&chxt=x&chxl=0:|Strongly Disagree|Disagree|No Opinion|Agree|Strongly Agree'; // Sets labelling to x-axis only
+									}
 									$googleChartUrl .= '&'.$chartSize.'&chbh=r,5,10'; // Makes chart wider		
 								} else {
 									$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only and labels with numbers

@@ -69,6 +69,9 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 * Several clarifications in admin panel
 * Ability to customise chart size
+* Ability to customise chart text size
+* Ability to customise chart text colour
+* Ability to abbreviation 'strongly' on chart
 
 = 2.9.1 =
 
