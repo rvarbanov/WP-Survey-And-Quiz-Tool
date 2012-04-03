@@ -67,17 +67,22 @@
 			<tr>
 				<th scope="row">Chart Background Colour</th>
 				<td><input type="text" name="wpsqt_chart_bg" value="<?php echo $chartBg; ?>" size="30" /></td>
-				<td>This is the colour that will be displayed as the chart background (in RGB format)</td>
+				<td>This is the colour that will be displayed as the chart background (in RRGGBB format)</td>
 			</tr>
 			<tr>
 				<th scope="row">Chart Bar Colour</th>
 				<td><input type="text" name="wpsqt_chart_colour" value="<?php echo $chartColour; ?>" size="30" /></td>
-				<td>This is the colour that will be displayed as the chart bar colour (in RGB format)</td>
+				<td>This is the colour that will be displayed as the chart bar colour (in RRGGBB format)</td>
 			</tr>
 			<tr>
 				<th scope="row">Chart Size</th>
 				<td><input type="text" name="wpsqt_chart_width" value="<?php echo $chartWidth; ?>" size="4" />&nbsp;x&nbsp;<input type="text" name="wpsqt_chart_height" value="<?php echo $chartHeight; ?>" size="4" /></td>
 				<td>This is the size of the chart which will be displayed on the site in pixels (width x height).</td>
+			</tr>
+			<tr>
+				<th scope="row">Chart Text Colour</th>
+				<td><input type="text" name="wpsqt_chart_text_colour" value="<?php echo $chartTextColour; ?>" size="30" /></td>
+				<td>This is the colour of the text that will be used for the charts (in RRGGBB format)</td>
 			</tr>
 			<tr>
 				<th scope="row">Support Us!</th>

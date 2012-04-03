@@ -13,16 +13,19 @@
 			<?php
 			$chartWidth = get_option('wpsqt_chart_width');
 			$chartHeight = get_option('wpsqt_chart_height');
+			$chartTextColour = get_option('wpsqt_chart_text_colour');
 			if (!isset($chartWidth) || $chartWidth == NULL)
 				$chartWidth = 400;
 			if (!isset($chartHeight) || $chartHeight == NULL)
 				$chartHeight = 185;
+			if (!isset($chartTextColour) || $chartTextColour == NULL)
+				$chartTextColour = '000000';
 			$chartSize = 'chs='.$chartWidth.'x'.$chartHeight;
 			?>
 
 			<?php if ( $question['type'] == "Multiple Choice" ||
 					   $question['type'] == "Dropdown" ) {
-						$googleChartUrl = 'http://chart.apis.google.com/chart?'.$chartSize.'&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333&cht=p&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
+						$googleChartUrl = 'http://chart.apis.google.com/chart?'.$chartSize.'&chxs=0,'.$chartTextColour.',13,0,lt,'.$chartTextColour.'|1,'.$chartTextColour.',13,1,lt,'.$chartTextColour.'&cht=p&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
 						$valueArray    = array();
 						$nameArray     = array();
 					   foreach ( $question['answers'] as $answer ) {
@@ -57,7 +60,7 @@
 
 						}
 					  } else if ($question['type'] == "Likert") {
-							$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
+							$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chxs=0,'.$chartTextColour.',13,0,lt,'.$chartTextColour.'|1,'.$chartTextColour.',13,1,lt,'.$chartTextColour.'&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
 							$valueArray    = array();
 							$nameArray     = array();
 							$maxValue = 0;
@@ -90,7 +93,7 @@
 				  			$wordScale = false;
 				  		}
 					  	foreach($question['answers'] as $optionkey => $matrixOption) {
-					  			$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333';
+					  			$googleChartUrl = 'http://chart.apis.google.com/chart?&cht=bvs&chxs=0,'.$chartTextColour.',13,0,lt,'.$chartTextColour.'|1,'.$chartTextColour.',13,1,lt,'.$chartTextColour.'';
 								$valueArray    = array();
 								$nameArray     = array();
 								$maxValue = 0;
