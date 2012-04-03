@@ -10,9 +10,19 @@
 			<div class="wpsqt-question-review">
 			<h3><?php echo $question['name']; ?></h3>
 
+			<?php
+			$chartWidth = get_option('wpsqt_chart_width');
+			$chartHeight = get_option('wpsqt_chart_height');
+			if (!isset($chartWidth) || $chartWidth == NULL)
+				$chartWidth = 400;
+			if (!isset($chartHeight) || $chartHeight == NULL)
+				$chartHeight = 185;
+			$chartSize = 'chs='.$chartWidth.'x'.$chartHeight;
+			?>
+
 			<?php if ( $question['type'] == "Multiple Choice" ||
 					   $question['type'] == "Dropdown" ) {
-						$googleChartUrl = 'http://chart.apis.google.com/chart?chs=400x185&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333&cht=p&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
+						$googleChartUrl = 'http://chart.apis.google.com/chart?'.$chartSize.'&chxs=0,333333,13,0,lt,333333|1,333333,13,1,lt,333333&cht=p&chf=bg,s,'.get_option("wpsqt_chart_bg").'&chco='.get_option("wpsqt_chart_colour");
 						$valueArray    = array();
 						$nameArray     = array();
 					   foreach ( $question['answers'] as $answer ) {
@@ -63,10 +73,10 @@
 							}
 							// Makes chart wider if its an agree/disagree question
 							if (array_key_exists('Disagree', $question['answers'])) {
-								$googleChartUrl .= '&chs=600x250&chbh=r,5,10';
+								$googleChartUrl .= '&'.$chartSize.'&chbh=r,5,10';
 								$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only
 							} else {
-								$googleChartUrl .= '&chs=350x250';
+								$googleChartUrl .= '&'.$chartSize;
 								$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only
 							}
 							$googleChartUrl .= '&chm=N,000000,0,,10|N,000000,1,,10|N,000000,2,,10'; // Adds the count above bars
@@ -94,11 +104,11 @@
 										$maxValue = $answer['count'];
 								}
 
-								$googleChartUrl .= '&chs=350x250';
+								$googleChartUrl .= '&'.$chartSize;
 
 								if (isset($wordScale) && $wordScale == true) {
 									$googleChartUrl .= '&chxt=x&chxl=0:|Strgly Disagree|Disagree|No Opinion|Agree|Strgly Agree'; // Sets labelling to x-axis only and labels with numbers
-									$googleChartUrl .= '&chs=600x250&chbh=r,5,10'; // Makes chart wider		
+									$googleChartUrl .= '&'.$chartSize.'&chbh=r,5,10'; // Makes chart wider		
 								} else {
 									$googleChartUrl .= '&chxt=x&chxl=0:|'.implode('|', $nameArray); // Sets labelling to x-axis only and labels with numbers
 								}

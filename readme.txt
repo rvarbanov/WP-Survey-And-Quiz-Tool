@@ -65,6 +65,11 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 == ChangeLog ==
 
+= 2.9.2 =
+
+* Several clarifications in admin panel
+* Ability to customise chart size
+
 = 2.9.1 =
 
 * Quiz duplication

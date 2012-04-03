@@ -75,6 +75,11 @@
 				<td>This is the colour that will be displayed as the chart bar colour (in RGB format)</td>
 			</tr>
 			<tr>
+				<th scope="row">Chart Size</th>
+				<td><input type="text" name="wpsqt_chart_width" value="<?php echo $chartWidth; ?>" size="4" />&nbsp;x&nbsp;<input type="text" name="wpsqt_chart_height" value="<?php echo $chartHeight; ?>" size="4" /></td>
+				<td>This is the size of the chart which will be displayed on the site in pixels (width x height).</td>
+			</tr>
+			<tr>
 				<th scope="row">Support Us!</th>
 				<td><input type="radio" name="wpsqt_support_us" value="yes" id="support_yes" <?php if ( !isset($supportUs) || empty($supportUs) || $supportUs == 'yes' ){ ?> checked="yes"<?php }?>> <label for="support_yes"><strong>Yes!</strong></label>
 					<input type="radio" name="wpsqt_support_us" value="no" id="support_no" <?php if ($supportUs == 'no'){ ?> checked="yes"<?php }?>> <label for="support_no">No</label></td>
@@ -93,7 +98,7 @@
 		</table>
 	
 		<p class="submit">
-			<input class="button-primary" type="submit" name="Save" value="Save Quiz" id="submitbutton" />
+			<input class="button-primary" type="submit" name="Save" value="Save Options" id="submitbutton" />
 		</p>
 		
 		<h3>Replacement Token</h3>
