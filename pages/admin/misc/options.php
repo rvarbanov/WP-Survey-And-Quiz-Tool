@@ -85,6 +85,11 @@
 				<td>This is the colour of the text that will be used for the charts (in RRGGBB format)</td>
 			</tr>
 			<tr>
+				<th scope="row">Chart Text Size</th>
+				<td><input type="text" name="wpsqt_chart_text_size" value="<?php echo $chartTextSize; ?>" size="30" /></td>
+				<td>This is the size of the text that will be used for the charts.</td>
+			</tr>
+			<tr>
 				<th scope="row">Support Us!</th>
 				<td><input type="radio" name="wpsqt_support_us" value="yes" id="support_yes" <?php if ( !isset($supportUs) || empty($supportUs) || $supportUs == 'yes' ){ ?> checked="yes"<?php }?>> <label for="support_yes"><strong>Yes!</strong></label>
 					<input type="radio" name="wpsqt_support_us" value="no" id="support_no" <?php if ($supportUs == 'no'){ ?> checked="yes"<?php }?>> <label for="support_no">No</label></td>
