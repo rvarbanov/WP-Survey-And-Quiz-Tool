@@ -284,6 +284,13 @@ class Wpsqt_Shortcode {
 									jQuery(".timer").hide();
 								}
 							}, 1000);
+
+
+							jQuery('.show_hide_hint').click( function() {
+							 		
+								jQuery(this).parent().next().toggle("slow");
+							 		return false;
+							  } ).click();
 						});
 					</script>
 				<?php
