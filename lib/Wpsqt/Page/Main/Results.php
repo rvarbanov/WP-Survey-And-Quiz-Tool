@@ -51,12 +51,26 @@ class Wpsqt_Page_Main_Results extends Wpsqt_Page {
 						                 ORDER BY ID DESC" 
 										, array($_GET['id']) )	, ARRAY_A	
 										);
+
+		$rawFormFields = $wpdb->get_results(
+						$wpdb->prepare( "SELECT * 
+						                 FROM `".WPSQT_TABLE_FORMS."` 
+						                 WHERE item_id = %d
+						                 ORDER BY ID ASC" 
+										, array($_GET['id']) )	, ARRAY_A	
+										);
+
 		if ( !isset($_GET['status']) || !isset(${$_GET['status']}) ) {								
 			$rawResults = array_merge($unviewed,$accepted,$rejected);
 		} else {
 			$rawResults = ${$_GET['status']};
 		}
-		
+
+		$formFields = array();
+		foreach ($rawFormFields as $rawFormField) {
+			$formFields[] = $rawFormField['name'];
+		}
+
 		$itemsPerPage = get_option('wpsqt_number_of_items');
 		$currentPage = Wpsqt_Core::getCurrentPageNumber();	
 		$startNumber = ( ($currentPage - 1) * $itemsPerPage );
@@ -67,6 +81,7 @@ class Wpsqt_Page_Main_Results extends Wpsqt_Page {
 										   'rejected_count' => sizeof($rejected));
 		$this->_pageVars['numberOfPages'] = Wpsqt_Core::getPaginationCount(sizeof($rawResults), $itemsPerPage);
 		$this->_pageVars['currentPage'] = Wpsqt_Core::getCurrentPageNumber();
+		$this->_pageVars['formFields'] = $formFields;
 				
 		return false;
 		

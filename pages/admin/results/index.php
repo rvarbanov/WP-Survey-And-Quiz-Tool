@@ -1,5 +1,4 @@
 <div class="wrap">
-
 	<div id="icon-tools" class="icon32"></div>
 	<h2>WP Survey And Quiz Tool - Results</h2>
 		
@@ -42,6 +41,9 @@
 				<tr>
 					<th class="manage-column" scope="col" width="35">ID</th>
 					<th class="manage-column column-title" scope="col">Title</th>
+					<?php foreach($formFields as $formField) {
+						?><th scope="col" width="150"><?php echo $formField; ?></th><?php
+					} ?>
 					<th scope="col" width="75">Score</th>
 					<th scope="col" width="90">Percentage</th>
 					<th scope="col" width="75">Pass/Fail</th>
@@ -53,6 +55,9 @@
 				<tr>
 					<th class="manage-column" scope="col" width="25">ID</th>
 					<th class="manage-column column-title" scope="col">Title</th>
+					<?php foreach($formFields as $formField) {
+						?><th scope="col" width="150"><?php echo $formField; ?></th><?php
+					} ?>
 					<th scope="col" width="75">Score</th>
 					<th scope="col" width="90">Percentage</th>
 					<th scope="col" width="75">Pass/Fail</th>
@@ -73,6 +78,8 @@
 							<span class="delete"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=resultsdelete&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&resultid=<?php echo $result['id']; ?>">Delete</a></span>
 						</div>
 					</td>
+					<td>First</td>
+					<td>Second</td>
 					<td><?php if($result['total'] == 0) {echo "Unable to auto mark";} else {echo $result['score']."/".$result['total'];} ?></td>
 					<td><?php if($result['total'] == 0) {echo "Unable to auto mark";} else {echo $result['percentage']."%";} ?></td>
 					<td><font color="<?php if ($result['pass'] == 1) {echo "green";} else {echo "#FF0000";} ?>"><?php if ($result['pass'] == 1) {echo "Pass";} else {echo "Fail";} ?></font></td>
