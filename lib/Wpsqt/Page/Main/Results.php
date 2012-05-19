@@ -25,6 +25,18 @@ class Wpsqt_Page_Main_Results extends Wpsqt_Page {
 		if ( isset($_GET['deleted']) && $_GET['deleted'] == "true" ){
 			$this->_pageVars['message'] = "Result successfully deleted!";
 		}
+
+		if (isset($_GET['orderby'])) {
+			$orderby = $_GET['orderby'];
+		} else {
+			$orderby = 'ID';
+		}
+
+		if (isset($_GET['order'])) {
+			$order = $_GET['order'];
+		} else {
+			$order = 'DESC';
+		}
 	
 		
 		$unviewed = $wpdb->get_results(
@@ -32,7 +44,7 @@ class Wpsqt_Page_Main_Results extends Wpsqt_Page {
 						                 FROM `".WPSQT_TABLE_RESULTS."` 
 						                 WHERE item_id = %d 
 						                 AND LCASE(status) = 'unviewed'
-						                 ORDER BY ID DESC" 
+						                 ORDER BY $orderby $order" 
 										, array($_GET['id']) )	, ARRAY_A	
 										);
 		$accepted = $wpdb->get_results(
@@ -40,16 +52,16 @@ class Wpsqt_Page_Main_Results extends Wpsqt_Page {
 						                 FROM `".WPSQT_TABLE_RESULTS."` 
 						                 WHERE item_id = %d 
 						                 AND LCASE(status) = 'accepted'
-						                 ORDER BY ID DESC" 
-										, array($_GET['id']) )	, ARRAY_A	
+						                 ORDER BY $orderby $order" 
+										, array($_GET['id']))	, ARRAY_A	
 										);
 		$rejected = $wpdb->get_results(
 						$wpdb->prepare( "SELECT * 
 						                 FROM `".WPSQT_TABLE_RESULTS."` 
 						                 WHERE item_id = %d 
 						                 AND LCASE(status) = 'rejected'
-						                 ORDER BY ID DESC" 
-										, array($_GET['id']) )	, ARRAY_A	
+						                 ORDER BY $orderby $order" 
+										, array($_GET['id']))	, ARRAY_A	
 										);
 
 		$rawFormFields = $wpdb->get_results(
