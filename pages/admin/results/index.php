@@ -67,6 +67,7 @@
 			</tfoot>
 			<tbody>
 				<?php foreach( $results as $result ){ ?>
+				<?php $formAnswers = unserialize($result['person']); ?>
 				<tr>
 					<th scope="row"><?php echo $result['id']; ?></th>
 					<td class="column-title">
@@ -78,8 +79,9 @@
 							<span class="delete"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=resultsdelete&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&resultid=<?php echo $result['id']; ?>">Delete</a></span>
 						</div>
 					</td>
-					<td>First</td>
-					<td>Second</td>
+					<?php foreach ($formAnswers as $key => $formAnswer) {
+						echo '<td>'.$formAnswer.'</td>';
+					} ?>
 					<td><?php if($result['total'] == 0) {echo "Unable to auto mark";} else {echo $result['score']."/".$result['total'];} ?></td>
 					<td><?php if($result['total'] == 0) {echo "Unable to auto mark";} else {echo $result['percentage']."%";} ?></td>
 					<td><font color="<?php if ($result['pass'] == 1) {echo "green";} else {echo "#FF0000";} ?>"><?php if ($result['pass'] == 1) {echo "Pass";} else {echo "Fail";} ?></font></td>
