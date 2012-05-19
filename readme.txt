@@ -65,6 +65,10 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 == ChangeLog ==
 
+= 2.9.4 =
+
+* Added custom form fields to results table
+
 = 2.9.3 =
 
 * Removed redundant code that was a possible XSS vulnerability
