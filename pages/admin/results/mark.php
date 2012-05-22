@@ -116,10 +116,10 @@ $hardPoints = 0;
 		  } ?>
 	<p style="margin-top: 50px;"><font size="+3">Total Points <span id="total_points"><?php echo $currentPoints; ?></span> out of <?php echo $totalPoints; ?></font></p>
 	<?php
-	$wpdb->query('UPDATE `'.WPSQT_TABLE_RESULTS.'` SET `score` = "'.$currentPoints.'" WHERE `id` = "'.$result['id'].'"');
-	$wpdb->query('UPDATE `'.WPSQT_TABLE_RESULTS.'` SET `total` = "'.$totalPoints.'" WHERE `id` = "'.$result['id'].'"');
-	$percentage = ($currentPoints / $totalPoints) * 100;
-	$wpdb->query('UPDATE `'.WPSQT_TABLE_RESULTS.'` SET `percentage` = "'.$percentage.'" WHERE `id` = "'.$result['id'].'"');
+	//$wpdb->query('UPDATE `'.WPSQT_TABLE_RESULTS.'` SET `score` = "'.$currentPoints.'" WHERE `id` = "'.$result['id'].'"');
+	//$wpdb->query('UPDATE `'.WPSQT_TABLE_RESULTS.'` SET `total` = "'.$totalPoints.'" WHERE `id` = "'.$result['id'].'"');
+	//$percentage = ($currentPoints / $totalPoints) * 100;
+	//$wpdb->query('UPDATE `'.WPSQT_TABLE_RESULTS.'` SET `percentage` = "'.$percentage.'" WHERE `id` = "'.$result['id'].'"');
 	?>
 	<select name="status">
 		<option value="Unviewed" <?php if ($result['status'] == 'Unviewed'){?> selected="yes"<?php } ?>>Unviewed</option>
