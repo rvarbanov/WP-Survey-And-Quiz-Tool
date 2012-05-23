@@ -73,7 +73,13 @@ class Wpsqt_Page_Main_Results extends Wpsqt_Page {
 										);
 
 		if ( !isset($_GET['status']) || !isset(${$_GET['status']}) ) {								
-			$rawResults = array_merge($unviewed,$accepted,$rejected);
+			$rawResults = $wpdb->get_results(
+						$wpdb->prepare( "SELECT * 
+						                 FROM `".WPSQT_TABLE_RESULTS."` 
+						                 WHERE item_id = %d 
+						                 ORDER BY $orderby $order" 
+										, array($_GET['id']))	, ARRAY_A	
+										);
 		} else {
 			$rawResults = ${$_GET['status']};
 		}
