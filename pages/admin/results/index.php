@@ -9,12 +9,17 @@
 		<strong><?php echo $message; ?></strong>
 	</div>
 	<?php } ?>
+
+	<?php if (isset($_GET['status'])) {
+		$filter = $_GET['status'];
+	} else {
+		$filter = 'all';
+	} ?>
 	
 	<form method="post" action="">
 	
 		<input type="hidden" name="wpsqt_nonce" value="<?php echo WPSQT_NONCE_CURRENT; ?>" />
 		<div class="tablenav">
-	
 			<ul class="subsubsub">
 				<li>
 					<a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>" <?php if (isset($filter) && $filter == 'all') { ?>  class="current"<?php } ?> id="all_link">All <span class="count">(<?php echo $counts['unviewed_count'] + $counts['accepted_count'] + $counts['rejected_count']; ?>)</span></a> |			
