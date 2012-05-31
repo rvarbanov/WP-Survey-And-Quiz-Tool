@@ -69,6 +69,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 * Fixed navigation links bug on results page
 * Fixed update check to respect proxy settings
+* Fixed poll results not displaying
 * Added custom form fields to results table
 * Added sorting by headings on quiz results table
 
