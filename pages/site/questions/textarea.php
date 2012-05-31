@@ -1,6 +1,6 @@
 <script type="text/javascript">
 jQuery(document).ready(function() {
-	jQuery('.show_hide_hint').click( function() {
+	jQuery('.show_hide_hint').unbind('click').click( function() {
 		jQuery(this).parent().next().toggle("slow");
 		return false;
 	});
