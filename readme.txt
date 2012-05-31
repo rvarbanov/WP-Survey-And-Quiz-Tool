@@ -68,6 +68,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 = 2.9.4 =
 
 * Fixed navigation links bug on results page
+* Fixed update check to respect proxy settings
 * Added custom form fields to results table
 * Added sorting by headings on quiz results table
 
