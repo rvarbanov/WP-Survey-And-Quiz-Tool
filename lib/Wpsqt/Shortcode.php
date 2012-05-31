@@ -717,7 +717,7 @@ class Wpsqt_Shortcode {
 						$givenAnswer = NULL;
 					}
 				}
-				if ($cachedSections[$sectionKey]['questions'][$question['id']]['type'] != "Multiple" && isset($cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswer]["count"]))
+				if (isset($cachedSections[$sectionKey]['questions'][$question['id']]['type']) && $cachedSections[$sectionKey]['questions'][$question['id']]['type'] != "Multiple" && isset($cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswer]["count"]))
 					$cachedSections[$sectionKey]['questions'][$question['id']]['answers'][$givenAnswer]["count"]++;
 			}
 		}
