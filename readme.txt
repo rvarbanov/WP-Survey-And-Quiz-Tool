@@ -72,6 +72,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Fixed poll results not displaying
 * Fixed free text question hint not displaying
 * Fixed several warnings from appearing
+* Fixed survey creation - notification email is no longer required as stated
 * Added button to remove an image from a question
 * Added custom form fields to results table
 * Added sorting by headings on quiz results table
