@@ -46,9 +46,6 @@
 				<tr>
 					<th class="manage-column" scope="col" width="35">ID</th>
 					<th class="manage-column column-title" scope="col">Title</th>
-					<?php foreach($formFields as $formField) {
-						?><th scope="col" width="150"><?php echo $formField; ?></th><?php
-					} ?>
 					<?php if (isset($_GET['order']) && $_GET['order'] == 'ASC') {
 						$order = 'DESC';
 					} else {
@@ -65,9 +62,6 @@
 				<tr>
 					<th class="manage-column" scope="col" width="25">ID</th>
 					<th class="manage-column column-title" scope="col">Title</th>
-					<?php foreach($formFields as $formField) {
-						?><th scope="col" width="150"><?php echo $formField; ?></th><?php
-					} ?>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=score&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Score</a></th>
 					<th scope="col" width="90"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=percentage&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Percentage</a></th>
 					<th scope="col" width="75">Pass/Fail</th>
@@ -77,7 +71,6 @@
 			</tfoot>
 			<tbody>
 				<?php foreach( $results as $result ){ ?>
-				<?php $formAnswers = unserialize($result['person']); ?>
 				<tr>
 					<th scope="row"><?php echo $result['id']; ?></th>
 					<td class="column-title">
@@ -89,9 +82,6 @@
 							<span class="delete"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=resultsdelete&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&resultid=<?php echo $result['id']; ?>">Delete</a></span>
 						</div>
 					</td>
-					<?php foreach ($formAnswers as $key => $formAnswer) {
-						echo '<td>'.$formAnswer.'</td>';
-					} ?>
 					<td><?php if($result['total'] == 0) {echo "Unable to auto mark";} else {echo $result['score']."/".$result['total'];} ?></td>
 					<td><?php if($result['total'] == 0) {echo "Unable to auto mark";} else {echo $result['percentage']."%";} ?></td>
 					<td><font color="<?php if ($result['pass'] == 1) {echo "green";} else {echo "#FF0000";} ?>"><?php if ($result['pass'] == 1) {echo "Pass";} else {echo "Fail";} ?></font></td>
