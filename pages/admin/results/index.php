@@ -55,7 +55,7 @@
 					<th scope="col" width="90"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=percentage&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Percentage</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=pass&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Pass/Fail</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=status&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Status</a></th>
-					<th scope="col" width="75">Date</th>
+					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=datetaken&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Date</a></th>
 				</tr>			
 			</thead>
 			<tfoot>
@@ -66,7 +66,7 @@
 					<th scope="col" width="90"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=percentage&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Percentage</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=pass&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Pass/Fail</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=status&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Status</a></th>
-					<th scope="col" width="75">Date</th>
+					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=datetaken&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Date</a></th>
 				</tr>			
 			</tfoot>
 			<tbody>
