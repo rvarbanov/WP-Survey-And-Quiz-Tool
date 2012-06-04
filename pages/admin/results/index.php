@@ -16,7 +16,7 @@
 		$filter = 'all';
 	} ?>
 	
-	<form method="post" action="">
+		<form method="post" action="<?php echo WPSQT_URL_MAIN.'&section=resultsdelete&subsection=quiz&id='.$_GET['id']; ?>">
 	
 		<input type="hidden" name="wpsqt_nonce" value="<?php echo WPSQT_NONCE_CURRENT; ?>" />
 		<div class="tablenav">
@@ -49,6 +49,7 @@
 		<table class="widefat post fixed" cellspacing="0">
 			<thead>
 				<tr>
+					<th scope="col" width="30"><input type="checkbox" class="selectall" /></th>
 					<th class="manage-column" scope="col" width="35"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=id&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">ID</a></th>
 					<th class="manage-column column-title" scope="col"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=person_name&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Title</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=score&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Score</a></th>
@@ -60,6 +61,7 @@
 			</thead>
 			<tfoot>
 				<tr>
+					<th scope="col" width="30"><input type="checkbox" class="selectall" /></th>
 					<th class="manage-column" scope="col" width="35"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=id&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">ID</a></th>
 					<th class="manage-column column-title" scope="col"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=person_name&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Title</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=score&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Score</a></th>
@@ -72,6 +74,7 @@
 			<tbody>
 				<?php foreach( $results as $result ){ ?>
 				<tr>
+					<td><input type="checkbox" name="delete[]" value="<?=$result['id']?>" /></td>
 					<th scope="row"><?php echo $result['id']; ?></th>
 					<td class="column-title">
 						<strong>
@@ -99,7 +102,7 @@
 		   		<?php echo Wpsqt_Core::getPaginationLinks($currentPage, $numberOfPages); ?>	
 			</div>
 		</div>
-		
+		<input type="submit" name="deleteselected" value="Delete Selected" />
 	</form>
 </div>
 <?php require_once WPSQT_DIR.'/pages/admin/shared/image.php'; ?>
