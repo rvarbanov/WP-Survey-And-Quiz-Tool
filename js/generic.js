@@ -1,5 +1,15 @@
 jQuery(document).ready( function(){
 
+	jQuery('.wpsqt-selectall').click( function() {
+		if (jQuery(this).attr('checked') == 'checked') {
+			jQuery('.wpsqt-delete').attr('checked', 'checked');
+			jQuery('.wpsqt-selectall').attr('checked', 'checked');
+		} else {
+			jQuery('.wpsqt-delete').removeAttr('checked');
+			jQuery('.wpsqt-selectall').removeAttr('checked');
+		}
+	});
+
 	jQuery('#add_section_quiz').click( function(){
 		var rowCount = jQuery('#section_table tbody tr').length;
 		var html = '';
