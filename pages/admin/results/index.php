@@ -41,16 +41,16 @@
 		</div>
 		
 		
+		<?php if (isset($_GET['order']) && $_GET['order'] == 'ASC') {
+			$order = 'DESC';
+		} else {
+			$order = 'ASC';
+		} ?>
 		<table class="widefat post fixed" cellspacing="0">
 			<thead>
 				<tr>
-					<th class="manage-column" scope="col" width="35">ID</th>
+					<th class="manage-column" scope="col" width="35"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=id&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">ID</a></th>
 					<th class="manage-column column-title" scope="col">Title</th>
-					<?php if (isset($_GET['order']) && $_GET['order'] == 'ASC') {
-						$order = 'DESC';
-					} else {
-						$order = 'ASC';
-					} ?>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=score&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Score</a></th>
 					<th scope="col" width="90"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=percentage&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Percentage</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=pass&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Pass/Fail</a></th>
@@ -60,7 +60,7 @@
 			</thead>
 			<tfoot>
 				<tr>
-					<th class="manage-column" scope="col" width="25">ID</th>
+					<th class="manage-column" scope="col" width="35"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=id&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">ID</a></th>
 					<th class="manage-column column-title" scope="col">Title</th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=score&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Score</a></th>
 					<th scope="col" width="90"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=percentage&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Percentage</a></th>
