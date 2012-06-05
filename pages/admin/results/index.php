@@ -102,7 +102,8 @@
 		   		<?php echo Wpsqt_Core::getPaginationLinks($currentPage, $numberOfPages); ?>	
 			</div>
 		</div>
-		<input type="submit" name="deleteselected" value="Delete Selected" />
+		<input type="submit" name="deleteselected" value="Delete Selected" /><br /><br />
+		<input type="checkbox" name="hideanon" value="hide" id="wpsqt-hideanon" /><label for="wpsqt-hideanon">Hide results with username Anonymous</label>
 	</form>
 </div>
 <?php require_once WPSQT_DIR.'/pages/admin/shared/image.php'; ?>

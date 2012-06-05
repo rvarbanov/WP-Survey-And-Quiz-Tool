@@ -10,6 +10,23 @@ jQuery(document).ready( function(){
 		}
 	});
 
+	jQuery('#wpsqt-hideanon').click( function() {
+		var tableRows = jQuery('tbody').children('tr');
+			// hide anon
+			jQuery(tableRows).each(function(index, value) {
+				if (jQuery("#wpsqt-hideanon").attr('checked') == 'checked') {
+					var name = jQuery(value).find('.row-title')[0];
+					if (jQuery(name).text() == 'Anonymous') {
+						// hide row
+						jQuery(value).css('display', 'none');
+					}
+				} else {
+					// show anon
+					jQuery(value).css('display', 'table-row');
+				}
+			});
+	});
+
 	jQuery('#add_section_quiz').click( function(){
 		var rowCount = jQuery('#section_table tbody tr').length;
 		var html = '';
