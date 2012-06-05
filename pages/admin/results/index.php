@@ -51,7 +51,7 @@
 				<tr>
 					<th scope="col" width="30"><input type="checkbox" class="wpsqt-selectall" /></th>
 					<th class="manage-column" scope="col" width="35"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=id&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">ID</a></th>
-					<th class="manage-column column-title" scope="col"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=person_name&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Title</a></th>
+					<th class="manage-column column-title" scope="col"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=person_name&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Name</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=score&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Score</a></th>
 					<th scope="col" width="90"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=percentage&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Percentage</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=pass&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Pass/Fail</a></th>
@@ -63,7 +63,7 @@
 				<tr>
 					<th scope="col" width="30"><input type="checkbox" class="wpsqt-selectall" /></th>
 					<th class="manage-column" scope="col" width="35"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=id&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">ID</a></th>
-					<th class="manage-column column-title" scope="col"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=person_name&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Title</a></th>
+					<th class="manage-column column-title" scope="col"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=person_name&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Name</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=score&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Score</a></th>
 					<th scope="col" width="90"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=percentage&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Percentage</a></th>
 					<th scope="col" width="75"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&orderby=pass&order=<?=$order?><?php if (isset($_GET['status'])) { echo '&status='.$_GET['status']; } ?>">Pass/Fail</a></th>
@@ -78,7 +78,7 @@
 					<th scope="row"><?php echo $result['id']; ?></th>
 					<td class="column-title">
 						<strong>
-							<a class="row-title" href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&resultid=<?php echo $result['id']; ?>"><?php echo esc_html(wp_kses_stripslashes($result['person_name']));  if (isset($person['email'])){ ?> - <?php echo $person['email']; }  if (isset($result['ipaddress'])) { ?> - <?php  echo $result['ipaddress']; } ?></a>
+							<a class="row-title" href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=quiz&id=<?php echo urlencode($_GET['id']); ?>&resultid=<?php echo $result['id']; ?>"><?php echo esc_html(wp_kses_stripslashes($result['person_name'])); ?></a>
 						</strong>
 						<div class="row-actions">
 							<span class="mark"><a href="<?php echo WPSQT_URL_MAIN; ?>&section=results&subsection=mark&id=<?php echo urlencode($_GET['id']); ?>&resultid=<?php echo $result['id']; ?>">Mark</a> | </span>

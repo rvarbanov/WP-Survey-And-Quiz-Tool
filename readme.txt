@@ -79,6 +79,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Added custom form fields to results table
 * Added sorting by headings on quiz results table
 * Moved an option on the quiz options page to make a little more sense
+* Removed IP address from results table - can be seen on mark page if required
 
 = 2.9.3 =
 
