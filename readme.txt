@@ -78,6 +78,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Added button to remove an image from a question
 * Added custom form fields to results table
 * Added sorting by headings on quiz results table
+* Added option to hide Anonymous results
 * Moved an option on the quiz options page to make a little more sense
 * Removed IP address from results table - can be seen on mark page if required
 
