@@ -131,6 +131,7 @@ class Wpsqt_Tokens {
 		$this->setTokenValue('SCORE'       , ( isset($_SESSION['wpsqt']['current_score']) ) ? $_SESSION['wpsqt']['current_score'] : '');
 		$this->setTokenValue('SCORE_PERCENTAGE' , ( isset($percentage) ) ? $percentage : '');
 		$this->setTokenValue('SCORE_PASSFAIL', ($_SESSION['wpsqt'][$quizName]['details']['pass_mark'] > (int)rtrim($percentage, "%")) ? 'Fail' : 'Pass');
+		$this->setTokenValue('SCORE_COMPETENT', ($_SESSION['wpsqt'][$quizName]['details']['pass_mark'] > (int)rtrim($percentage, "%")) ? 'Not yet competent' : 'Competent');
 		$this->setTokenValue('RESULT_URL'  , WPSQT_URL_MAIN."&section=results&subsection=mark&id=".$_SESSION['wpsqt']['item_id']."&resultid=".$_SESSION['wpsqt']['result_id'] );
 		$this->setTokenValue('USER_EMAIL'  , ( isset($_SESSION['wpsqt'][$quizName]['person']['email']) ) ? $_SESSION['wpsqt'][$quizName]['person']['email'] : '');
 		$this->setTokenValue('USER_NAME'   , ( isset($_SESSION['wpsqt'][$quizName]['person']['name']) ) ? $_SESSION['wpsqt'][$quizName]['person']['name'] : 'Anonymous User');
