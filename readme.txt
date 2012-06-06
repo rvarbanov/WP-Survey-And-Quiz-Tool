@@ -1,10 +1,10 @@
-=== WP Survey And Quiz Tool ===
+
 Contributors: Fubra,Backie,olliea95
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=99WUGVV4HY5ZE&lc=GB&item_name=CATN%20Plugins&item_number=catn&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted 
 Tags: Quiz,test,exam,survey,results,email,quizzes,charts,google charts,wpsqt,tool,poll,polling,polls
 Requires at least: 3.1
 Tested up to: 3.3-beta2
-Stable tag: 2.10
+Stable tag: 2.10.1
 A highly customisable Quiz, Survey and Poll plugin to which allows for unlimited questions and sections.
 
 == Description ==
@@ -64,6 +64,10 @@ If you have upgraded from a version 1.x.x and nothing appears to be saving, plea
 Any further issues then feel free to create a thread on the <a href="http://wordpress.org/tags/wp-survey-and-quiz-tool?forum_id=10">forum</a>.
 
 == ChangeLog ==
+
+= 2.10.1 =
+
+* Fixed error with maintenance page not able to display
 
 = 2.10 =
 

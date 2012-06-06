@@ -14,12 +14,8 @@ class Wpsqt_Page_Maintenance extends Wpsqt_Page {
 
 	public function process(){
 		$page = wp_remote_get('http://wordpress.org/extend/plugins/wp-survey-and-quiz-tool/');
-		if (!wp_error($page)) {
 			preg_match_all('$download\sversion\s((\d|\.)*)$i', $page['body'], $version);
 			$this->_pageVars['version'] = $version[1][0];
-		} else {
-			$this->_pageVars['version'] = 'Unknown';
-		}
 
 		if(get_option('wpsqt_update_required') == '1') {
 			$update = true;
