@@ -49,6 +49,11 @@ foreach ($_SESSION['wpsqt'][$quizName]['sections'][$sectionKey]['questions'] as 
 			<?php do_action('wpsqt_quiz_question_section',$question); ?>
 			
 			<?php require Wpsqt_Question::getDisplayView($question); ?>
+
+			<?php if (isset($question['explanation']) && !empty($question['explanation'])) {
+				echo '<a href="#" class="wpsqt-show-answer">Show answer</a>';
+				echo '<div class="wpsqt-answer-explanation" style="display: none;">'.nl2br(stripslashes($question['explanation'])).'</div>';
+			} ?>
 			
 	</div>
 <?php } ?>
