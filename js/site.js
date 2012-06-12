@@ -4,4 +4,12 @@ jQuery(document).ready( function() {
 		jQuery(this).hide();
 		return false;
 	});
+	jQuery('.wpst_question input').click( function() {
+		console.log();
+		var explanationText = jQuery(this).parents('.wpst_question').children('.wpsqt-answer-explanation');
+
+		if (explanationText.length != 0) {
+			jQuery(explanationText).siblings('.wpsqt-show-answer').show();
+		}
+	});
 });
