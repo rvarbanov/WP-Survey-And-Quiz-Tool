@@ -34,6 +34,9 @@ foreach ( $_SESSION['wpsqt'][$quizName]['sections'] as $section ){ ?>
 							<?php } ?>
 						</ol>
 					</p>
+					<?php if (isset($questionArray['explanation'])) { ?>
+						<p class="wpsqt-answer-explanation"><?=$questionArray['explanation']?></p>
+					<?php } ?>
 				<?php } else { 
 					?>				
 					<b><u>Answer Given</u></b>
