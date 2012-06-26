@@ -11,7 +11,7 @@
 
 class Wpsqt_Question_Likertmatrix extends Wpsqt_Question {
 
-	public function __construct(){
+	public function __construct(array $values = array()){
 										
 		$this->_id = "likertmatrix";										
 		$this->_questionVars['answers'] = array('text' => false);

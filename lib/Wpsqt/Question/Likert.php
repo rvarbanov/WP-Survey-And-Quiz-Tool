@@ -11,7 +11,7 @@
 
 class Wpsqt_Question_Likert extends Wpsqt_Question {
 
-	public function __construct(){
+	public function __construct(array $values = array()){
 										
 		$this->_id = "likert";										
 		$this->_formView = WPSQT_DIR."pages/admin/forms/question.likert.php";
