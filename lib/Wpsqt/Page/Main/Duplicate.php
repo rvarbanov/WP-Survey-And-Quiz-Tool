@@ -27,11 +27,13 @@ class Wpsqt_Page_Main_Duplicate extends Wpsqt_Page {
 			)
 		);
 
+		$newSectionIds = array();
+
 		if ($insert == 1) {
 			$itemId = $wpdb->insert_id;
 
 			// Duplicate sections
-			$sectionInfos = $wpdb->get_results("SELECT `name`, `limit`, `order`, `difficulty` FROM `".WPSQT_TABLE_SECTIONS."` WHERE `item_id` = '".$rowToDuplicate['id']."'", ARRAY_A);
+			$sectionInfos = $wpdb->get_results("SELECT `id`, `name`, `limit`, `order`, `difficulty` FROM `".WPSQT_TABLE_SECTIONS."` WHERE `item_id` = '".$rowToDuplicate['id']."'", ARRAY_A);
 
 			if (isset($sectionInfos) && !empty($sectionInfos) && $sectionInfos != NULL) {
 				foreach ($sectionInfos as $sectionInfo) {
@@ -46,6 +48,7 @@ class Wpsqt_Page_Main_Duplicate extends Wpsqt_Page {
 							'timestamp' => date("Y-m-d H:i:s")
 						)
 					);
+					$newSectionIds[$sectionInfo['id']] = $wpdb->insert_id;
 					if ($insert != 1) {
 						echo 'Error duplicating quiz';
 						exit;
@@ -64,7 +67,7 @@ class Wpsqt_Page_Main_Duplicate extends Wpsqt_Page {
 							'item_id' => $itemId,
 							'name' => $questionInfo['name'],
 							'type' => $questionInfo['type'],
-							'section_id' => $questionInfo['section_id'],
+							'section_id' => $newSectionIds[$questionInfo['section_id']],
 							'difficulty' => $questionInfo['difficulty'],
 							'meta' => $questionInfo['meta'],
 							'timestamp' => date("Y-m-d H:i:s")

@@ -68,6 +68,10 @@ Any further issues then feel free to create a thread on the <a href="http://word
 = 2.10.3 =
 
 * Fixed poll results page when limited by cookie
+* Fixed disabled quiz/poll/survey still displaying
+* Fixed various issues with latest PHP
+* Fixed var dump displaying when displaying certain surveys/polls
+* Fixed duplication of quiz/poll/survey not assigning correct sections to questions
 
 = 2.10.2 =
 
