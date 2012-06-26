@@ -158,6 +158,12 @@ class Wpsqt_Shortcode {
 		}
 		$quizName = $_SESSION['wpsqt']['current_id'];
 
+		// Checks if the quiz/survey/poll is disabled
+		if (isset($_SESSION['wpsqt'][$quizName]['details']['status']) && $_SESSION['wpsqt'][$quizName]['details']['status'] == 'disabled') {
+			echo 'This '.$_SESSION['wpsqt'][$quizName]['details']['type'].' is currently disabled.';
+			return;
+		}
+
 		// Checks if limiting per IP is enabled and if the user has already taken it
 		if (isset($_SESSION['wpsqt'][$quizName]['details']['limit_one']) && $_SESSION['wpsqt'][$quizName]['details']['limit_one'] == 'yes') {
 			$item_id = $_SESSION['wpsqt'][$quizName]['details']['id'];
