@@ -449,7 +449,9 @@ class Wpsqt_Core {
 				}
 			}
 			// Just reuse the same page view that the admin thing uses
-			require_once WPSQT_DIR.'pages/admin/surveys/result.total.script.php';
+			require_once WPSQT_DIR.'/lib/Wpsqt/Page.php';
+			require_once WPSQT_DIR.'/lib/Wpsqt/Page/Main/Results/Poll.php';
+			Wpsqt_Page_Main_Results_Poll::displayResults($surveyId);
 		}
 	}
 

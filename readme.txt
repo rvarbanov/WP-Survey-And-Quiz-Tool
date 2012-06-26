@@ -65,6 +65,10 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 == ChangeLog ==
 
+= 2.10.3 =
+
+* Fixed poll results page when limited by cookie
+
 = 2.10.2 =
 
 * Added the ability to define an answer explanation
