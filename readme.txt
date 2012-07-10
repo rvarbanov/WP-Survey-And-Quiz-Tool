@@ -65,7 +65,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 
 == ChangeLog ==
 
-= 2.10.3 =
+= 2.11 =
 
 * Fixed poll results page when limited by cookie
 * Fixed disabled quiz/poll/survey still displaying

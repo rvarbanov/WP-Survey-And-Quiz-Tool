@@ -97,9 +97,11 @@ class Wpsqt_Mail {
 		$blogname = get_bloginfo('name');
 		$emailSubject = $type.' Notification From '.$blogname;
 		$headers = 'From: '.$blogname.' <'.$fromEmail.'>' . "\r\n";
-		foreach( $emailList  as $emailAddress ){
-			mail($emailAddress,$emailSubject,$emailMessage,$headers);
-		}	
+		if (isset($emailList) && is_array($emailList)) {
+			foreach( $emailList  as $emailAddress ){
+				mail($emailAddress,$emailSubject,$emailMessage,$headers);
+			}	
+		}
 	}
 	
 }
