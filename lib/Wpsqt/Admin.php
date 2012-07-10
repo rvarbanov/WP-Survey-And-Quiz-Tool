@@ -22,7 +22,14 @@ class Wpsqt_Admin extends Wpsqt_Core {
 		parent::__construct();
 		add_action('plugins_loaded', array($this, 'wpsqt_init_menus'));
 
-		add_action( 'wpsqt_page_files' , array($this,"enqueue_files_admin"));
+		// Scripts cannot be enqueued when the wpsqt_page_files hook is run on 
+		// pre 3.2.2, so fallback to standard enqueuing procedure
+		global $wp_version;
+		if (version_compare('3.2.1', $wp_version, '>')) {
+			add_action( 'wpsqt_page_files' , array($this,"enqueue_files_admin"));
+		} else {
+			add_action( 'admin_init' , array($this,"enqueue_files_admin"));
+		}
 		add_action( 'admin_init' , array($this,"adminFilter"));
 		add_action( 'admin_head-media-upload.php', array( $this, 'print_scripts_media_up' ), 11 );
 		add_action( 'admin_notices' , array($this, 'admin_notices') );
