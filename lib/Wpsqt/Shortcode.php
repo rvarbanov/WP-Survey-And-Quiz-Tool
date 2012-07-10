@@ -313,9 +313,11 @@ class Wpsqt_Shortcode {
 
 			$_SESSION['wpsqt'][$quizName]['sections'][$pastSectionKey]['answers'] = array();
 			$canAutoMark = true;
-			foreach ($_SESSION["wpsqt"][$quizName]["sections"][$pastSectionKey]["questions"] as $questionData ){
-				if ( isset($questionData['required']) && $questionData['required'] == "yes") {
-					$requiredQuestions['exist']++;
+			if (isset($_SESSION["wpsqt"][$quizName]["sections"][$pastSectionKey]["questions"]) && is_array($_SESSION["wpsqt"][$quizName]["sections"][$pastSectionKey]["questions"])) { 
+				foreach ($_SESSION["wpsqt"][$quizName]["sections"][$pastSectionKey]["questions"] as $questionData ){
+					if ( isset($questionData['required']) && $questionData['required'] == "yes") {
+						$requiredQuestions['exist']++;
+					}
 				}
 			}
 
