@@ -14,6 +14,10 @@ $objTokens->setDefaultValues();
 				$percentRight >= $_SESSION['wpsqt'][$quizName]['details']['pass_mark']) {
 					$string = $objTokens->doReplacement($_SESSION['wpsqt'][$quizName]['details']['pass_finish_message']);
 					echo nl2br($string);
+				} else if ( isset($_SESSION['wpsqt'][$quizName]['details']['fail_review']) &&
+					$_SESSION['wpsqt'][$quizName]['details']['fail_review'] == "yes" &&
+					$percentRight < $_SESSION['wpsqt'][$quizName]['details']['pass_mark']) {
+					require_once Wpsqt_Core::pageView('site/quiz/review.php');
 	} else if ( isset($_SESSION['wpsqt'][$quizName]['details']['finish_message']) &&
 			  !empty($_SESSION['wpsqt'][$quizName]['details']['finish_message'])) {
 			// PARSE TOKENS

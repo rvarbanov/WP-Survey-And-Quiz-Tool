@@ -72,6 +72,9 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Fixed various issues with latest PHP
 * Fixed var dump displaying when displaying certain surveys/polls
 * Fixed duplication of quiz/poll/survey not assigning correct sections to questions
+* Fixed scripts/styles not loading on <= WP 3.2.1
+* Fixed several PHP notices
+* Added ability to show quiz review only on fail
 
 = 2.10.2 =
 
