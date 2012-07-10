@@ -421,6 +421,8 @@ class Wpsqt_Core {
 	}
 
 	public function shortcode_survey_results( $atts ) {
+		ob_start();
+		ob_clean();
 		global $wpdb;
 		extract( shortcode_atts( array(
 					'name' => false
@@ -453,6 +455,9 @@ class Wpsqt_Core {
 			require_once WPSQT_DIR.'/lib/Wpsqt/Page/Main/Results/Poll.php';
 			Wpsqt_Page_Main_Results_Poll::displayResults($surveyId);
 		}
+		$contents = ob_get_contents();
+		ob_end_clean();
+		return $contents;
 	}
 
 	public function enqueue_files() {
