@@ -75,6 +75,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Fixed scripts/styles not loading on <= WP 3.2.1
 * Fixed several PHP notices
 * Fixed the survey_results shortcode so it is positioned correctly in a post/page
+* Fixed default dropdown answer
 * Added ability to show quiz review only on fail
 
 = 2.10.2 =
