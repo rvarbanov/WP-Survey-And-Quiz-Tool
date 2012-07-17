@@ -76,6 +76,7 @@ Any further issues then feel free to create a thread on the <a href="http://word
 * Fixed several PHP notices
 * Fixed the survey_results shortcode so it is positioned correctly in a post/page
 * Fixed default dropdown answer
+* Fixed bug when using custom permalinks and viewing the quiz on Firefox
 * Added ability to show quiz review only on fail
 
 = 2.10.2 =
