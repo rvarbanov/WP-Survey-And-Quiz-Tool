@@ -119,7 +119,7 @@ class Wpsqt_Tokens {
 		if ($_SESSION['wpsqt']['current_type'] == 'quiz') {
 			// Calculate percentage
 			preg_match('$(\d*)\scorrect\sout\sof\s(\d*)$', $_SESSION['wpsqt']['current_score'], $score);
-			if (isset($score) && is_array($score) && $score[2] != 0) {
+			if (isset($score) && is_array($score) && isset($score[2]) && $score[2] != 0) {
 				$percentage = $score[1] / $score[2] * 100 . '%';
 			} else {
 				$percentage = '?%';
