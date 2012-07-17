@@ -95,13 +95,13 @@ class Wpsqt_Shortcode {
 		$_SESSION['wpsqt']['current_type'] = $type;
 		$this->_type = $type;
 		$this->_step = ( isset($_POST['step']) && ctype_digit($_POST['step']) ) ? intval($_POST['step']) : 0;
+		$_SESSION['wpsqt']['current_id'] = $identifier;
 		if ( $this->_step == 0 ){
 
 			$_SESSION['wpsqt'][$identifier]['start_time'] = microtime(true);
 			$_SESSION['wpsqt'][$identifier]['person'] = array();
 			$_SESSION['wpsqt'][$identifier]['details'] = Wpsqt_System::getItemDetails($identifier, $type);
 
-			$_SESSION['wpsqt']['current_id'] = $identifier;
 			$_SESSION['wpsqt']['item_id'] = $_SESSION['wpsqt'][$identifier]['details']['id'];
 			if ( !empty($_SESSION['wpsqt'][$identifier]['details']) ){
 				$_SESSION['wpsqt'][$identifier]['sections'] = $wpdb->get_results(
