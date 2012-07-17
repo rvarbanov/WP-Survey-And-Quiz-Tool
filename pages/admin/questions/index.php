@@ -69,6 +69,7 @@ var saveOrder = function() {
 				<th>ID</th>
 				<th>Question</th>
 				<th>Type</th>
+				<th>Rate</th>
 				<th>Edit</th>
 				<th>Delete</th>
 				<th></th>
@@ -79,6 +80,7 @@ var saveOrder = function() {
 				<th>ID</th>
 				<th>Question</th>
 				<th>Type</th>
+				<th>Rate</th>
 				<th>Edit</th>
 				<th>Delete</th>
 				<th></th>
@@ -100,6 +102,32 @@ var saveOrder = function() {
 				<td><?php echo $question['id']; ?></td>
 				<td><?php echo stripslashes($question['name']); ?></td>
 				<td><?php echo ucfirst( stripslashes($question['type']) ); ?></td>
+                
+				<td>
+					<?php    
+                    
+                    //global $wpdb;
+                    $correct_answer = 0;
+                    
+                    $RESULTS_count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM ".WPSQT_TABLE_RESULTS ) );
+                    
+                    for($i = 1; $i <= $RESULTS_count*2; $i++){
+                    
+                        $rawResult = $wpdb->get_row(
+                                        $wpdb->prepare("SELECT * FROM ".WPSQT_TABLE_RESULTS." WHERE id = $i"),ARRAY_A);
+                                                        
+                        $rawResult['sections'] = unserialize($rawResult['sections']);
+                        
+                        foreach((array)$rawResult['sections'] as $result_sections){
+                            if($result_sections['answers'][$question['id']]['mark'] == 'correct') $correct_answer++;
+                        }
+                    }
+                    $success_rate = number_format(($correct_answer/$RESULTS_count)*100, 0);
+                    //echo ($success_rate);
+                    echo ($success_rate<80 ? "<span style=\"color:red;\">$success_rate%</span>" : "<span style=\"color:green;\">$success_rate%</span>");
+                    ?>
+                </td>
+                
 				<td><a href="<?php echo WPSQT_URL_MAIN; ?>&section=questionedit&subsection=<?php esc_html_e($_GET['subsection']); ?>&id=<?php esc_html_e($_GET['id']); ?>&questionid=<?php esc_html_e($question['id']); ?>" class="button-secondary" title="Edit Question">Edit</a></td>
 				<td><a href="<?php echo WPSQT_URL_MAIN; ?>&section=questiondelete&subsection=<?php esc_html_e($_GET['subsection']); ?>&id=<?php esc_html_e($_GET['id']); ?>&questionid=<?php esc_html_e($question['id']); ?>" class="button-secondary" title="Delete Question">Delete</a></td>
 				<td><img src="<?php echo plugin_dir_url(WPSQT_DIR.'images/handle.png').'handle.png'; ?>" /></td>
