@@ -119,7 +119,7 @@ var saveOrder = function() {
                         $rawResult['sections'] = unserialize($rawResult['sections']);
                         
                         foreach((array)$rawResult['sections'] as $result_sections){
-                            if($result_sections['answers'][$question['id']]['mark'] == 'correct') $correct_answer++;
+                            if(isset($result_sections['answers'][$question['id']]['mark']) && $result_sections['answers'][$question['id']]['mark'] == 'correct') $correct_answer++;
                         }
                     }
                     $success_rate = number_format(($correct_answer/$RESULTS_count)*100, 0);
